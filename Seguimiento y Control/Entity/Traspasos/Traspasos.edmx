@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Traspasos_Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Traspasos_ModelStoreContainer">
+          <EntitySet Name="empresas" EntityType="Traspasos_Model.Store.empresas" store:Type="Tables" Schema="seguimiento_traspasos" />
+          <EntitySet Name="etiquetas" EntityType="Traspasos_Model.Store.etiquetas" store:Type="Tables" Schema="seguimiento_traspasos" />
+          <EntitySet Name="paquetes" EntityType="Traspasos_Model.Store.paquetes" store:Type="Tables" Schema="seguimiento_traspasos" />
+        </EntityContainer>
+        <EntityType Name="empresas">
+          <Key>
+            <PropertyRef Name="id_empresa" />
+          </Key>
+          <Property Name="id_empresa" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Name="id_etiqueta" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="tipo_etiqueta" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="id_lote_origen" Type="uint" Nullable="false" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="fecha_empaque" Type="datetime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="datetime" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="piezas" Type="uint" />
+          <Property Name="id_empresa_destino" Type="uint" Nullable="false" />
+          <Property Name="id_empresa_origen" Type="uint" Nullable="false" />
+          <Property Name="estado" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="numero_etiqueta_contenedor" Type="varchar" MaxLength="14" />
+        </EntityType>
+        <EntityType Name="paquetes">
+          <Key>
+            <PropertyRef Name="id paquetes" />
+          </Key>
+          <Property Name="id paquetes" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="estado" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="id_pedido_origen" Type="uint" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="datetime" Nullable="false" />
+          <Property Name="id_empresa_origen" Type="uint" Nullable="false" />
+          <Property Name="id_empresa_destino" Type="uint" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Traspasos_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Traspasos_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="empresas" EntityType="Traspasos_Model.empresas" />
+          <EntitySet Name="etiquetas" EntityType="Traspasos_Model.etiquetas" />
+          <EntitySet Name="paquetes" EntityType="Traspasos_Model.paquetes" />
+        </EntityContainer>
+        <EntityType Name="empresas">
+          <Key>
+            <PropertyRef Name="id_empresa" />
+          </Key>
+          <Property Name="id_empresa" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Name="id_etiqueta" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="String" Nullable="false" MaxLength="14" Unicode="false" FixedLength="false" />
+          <Property Name="tipo_etiqueta" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="id_lote_origen" Type="Int64" Nullable="false" />
+          <Property Name="clave_articulo" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="fecha_empaque" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="DateTime" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="piezas" Type="Int64" />
+          <Property Name="id_empresa_destino" Type="Int64" Nullable="false" />
+          <Property Name="id_empresa_origen" Type="Int64" Nullable="false" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="numero_etiqueta_contenedor" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="paquetes">
+          <Key>
+            <PropertyRef Name="id_paquetes" />
+          </Key>
+          <Property Type="Int64" Name="id_paquetes" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="numero_etiqueta" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="cantidad" Nullable="false" />
+          <Property Type="String" Name="unidad" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_pedido_origen" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_caducidad" Nullable="false" />
+          <Property Type="Int64" Name="id_empresa_origen" Nullable="false" />
+          <Property Type="Int64" Name="id_empresa_destino" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Traspasos_ModelStoreContainer" CdmEntityContainer="Traspasos_Entities">
+          <EntitySetMapping Name="empresas"><EntityTypeMapping TypeName="Traspasos_Model.empresas"><MappingFragment StoreEntitySet="empresas">
+            <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="etiquetas"><EntityTypeMapping TypeName="Traspasos_Model.etiquetas"><MappingFragment StoreEntitySet="etiquetas">
+            <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+            <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+            <ScalarProperty Name="tipo_etiqueta" ColumnName="tipo_etiqueta" />
+            <ScalarProperty Name="id_lote_origen" ColumnName="id_lote_origen" />
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="fecha_empaque" ColumnName="fecha_empaque" />
+            <ScalarProperty Name="fecha_caducidad" ColumnName="fecha_caducidad" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+            <ScalarProperty Name="piezas" ColumnName="piezas" />
+            <ScalarProperty Name="id_empresa_destino" ColumnName="id_empresa_destino" />
+            <ScalarProperty Name="id_empresa_origen" ColumnName="id_empresa_origen" />
+            <ScalarProperty Name="estado" ColumnName="estado" />
+            <ScalarProperty Name="numero_etiqueta_contenedor" ColumnName="numero_etiqueta_contenedor" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="paquetes">
+            <EntityTypeMapping TypeName="Traspasos_Model.paquetes">
+              <MappingFragment StoreEntitySet="paquetes">
+                <ScalarProperty Name="id_empresa_destino" ColumnName="id_empresa_destino" />
+                <ScalarProperty Name="id_empresa_origen" ColumnName="id_empresa_origen" />
+                <ScalarProperty Name="fecha_caducidad" ColumnName="fecha_caducidad" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_pedido_origen" ColumnName="id_pedido_origen" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="id_paquetes" ColumnName="id paquetes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Traspasos">
+        <EntityTypeShape EntityType="Traspasos_Model.empresas" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
+        <EntityTypeShape EntityType="Traspasos_Model.etiquetas" Width="1.5" PointX="2.75" PointY="0.75" Height="3.7109993489583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="Traspasos_Model.paquetes" Width="1.5" PointX="4.875" PointY="0.75" Height="2.9417936197916656" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

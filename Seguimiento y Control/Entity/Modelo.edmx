@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SeguimientoContext.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SeguimientoContextStoreContainer">
+          <EntitySet Name="areas" EntityType="SeguimientoContext.Store.areas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="articulos" EntityType="SeguimientoContext.Store.articulos" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="articulos_unidades" EntityType="SeguimientoContext.Store.articulos_unidades" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="bodegas" EntityType="SeguimientoContext.Store.bodegas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="etiquetas" EntityType="SeguimientoContext.Store.etiquetas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="lotes" EntityType="SeguimientoContext.Store.lotes" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pesos_fijos" EntityType="SeguimientoContext.Store.pesos_fijos" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="proveedores" EntityType="SeguimientoContext.Store.proveedores" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="unidades" EntityType="SeguimientoContext.Store.unidades" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="usuarios" EntityType="SeguimientoContext.Store.usuarios" store:Type="Tables" Schema="seguimiento_acc" />
+        </EntityContainer>
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="id_area" />
+          </Key>
+          <Property Name="id_area" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="articulos">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="articulo" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="dias_caducidad" Type="int" Nullable="false" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="peso_variado" Type="bit" Nullable="false" />
+          <Property Name="parcial" Type="bit" Nullable="false" />
+          <Property Name="leyenda" Type="bit" Nullable="false" />
+          <Property Name="cantidad_fija" Type="int" />
+        </EntityType>
+        <EntityType Name="articulos_unidades">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+            <PropertyRef Name="id_unidad" />
+          </Key>
+          <Property Name="id_articulo" Type="int" Nullable="false" />
+          <Property Name="id_unidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bodegas">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bodega" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Name="id_etiqueta" Type="int" Nullable="false" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="13" />
+          <Property Name="tipo_etiqueta" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="etiquetascol" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="id_lote" Type="int" Nullable="false" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="fecha_empaque" Type="datetime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="datetime" Nullable="false" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="float" Nullable="false" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="piezas" Type="int" />
+        </EntityType>
+        <EntityType Name="lotes">
+          <Key>
+            <PropertyRef Name="id_lote" />
+          </Key>
+          <Property Name="id_lote" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pesos_fijos">
+          <Key>
+            <PropertyRef Name="clave_articulo" />
+            <PropertyRef Name="cantidad" />
+          </Key>
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="cantidad" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unidades">
+          <Key>
+            <PropertyRef Name="id_unidad" />
+          </Key>
+          <Property Name="id_unidad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="id_area" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SeguimientoContext" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Seguimiento_ACC_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="areas" EntityType="SeguimientoContext.areas" />
+          <EntitySet Name="articulos" EntityType="SeguimientoContext.articulos" />
+          <EntitySet Name="articulos_unidades" EntityType="SeguimientoContext.articulos_unidades" />
+          <EntitySet Name="bodegas" EntityType="SeguimientoContext.bodegas" />
+          <EntitySet Name="pesos_fijos" EntityType="SeguimientoContext.pesos_fijos" />
+          <EntitySet Name="proveedores" EntityType="SeguimientoContext.proveedores" />
+          <EntitySet Name="unidades" EntityType="SeguimientoContext.unidades" />
+          <EntitySet Name="usuarios" EntityType="SeguimientoContext.usuarios" />
+          <EntitySet Name="etiquetas" EntityType="SeguimientoContext.etiquetas" />
+          <EntitySet Name="lotes" EntityType="SeguimientoContext.lotes" />
+        </EntityContainer>
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="id_area" />
+          </Key>
+          <Property Name="id_area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="articulos">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="String" Nullable="false" />
+          <Property Name="articulo" Type="String" Nullable="false" />
+          <Property Name="dias_caducidad" Type="Int32" Nullable="false" />
+          <Property Name="id_bodega" Type="Int32" Nullable="false" />
+          <Property Name="peso_variado" Type="Boolean" Nullable="false" />
+          <Property Name="parcial" Type="Boolean" Nullable="false" />
+          <Property Name="leyenda" Type="Boolean" Nullable="false" />
+          <Property Type="Int32" Name="cantidad_fija" />
+        </EntityType>
+        <EntityType Name="articulos_unidades">
+          <Key>
+            <PropertyRef Name="id_articulo" />
+            <PropertyRef Name="id_unidad" />
+          </Key>
+          <Property Name="id_articulo" Type="Int32" Nullable="false" />
+          <Property Name="id_unidad" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bodegas">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bodega" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pesos_fijos">
+          <Key>
+            <PropertyRef Name="clave_articulo" />
+            <PropertyRef Name="cantidad" />
+          </Key>
+          <Property Name="clave_articulo" Type="String" Nullable="false" />
+          <Property Name="cantidad" Type="Single" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unidades">
+          <Key>
+            <PropertyRef Name="id_unidad" />
+          </Key>
+          <Property Name="id_unidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unidad" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="id_area" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Type="Int32" Name="id_etiqueta" Nullable="false" />
+          <Property Type="String" Name="numero_etiqueta" Nullable="false" />
+          <Property Type="String" Name="tipo_etiqueta" Nullable="false" />
+          <Property Type="String" Name="etiquetascol" Nullable="false" />
+          <Property Type="Int32" Name="id_lote" Nullable="false" />
+          <Property Type="String" Name="clave_articulo" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_empaque" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_caducidad" Nullable="false" />
+          <Property Type="Int32" Name="id_bodega" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="Single" Name="cantidad" Nullable="false" />
+          <Property Type="String" Name="unidad" Nullable="false" />
+          <Property Type="Int32" Name="piezas" />
+        </EntityType>
+        <EntityType Name="lotes">
+          <Key>
+            <PropertyRef Name="id_lote" />
+          </Key>
+          <Property Type="Int32" Name="id_lote" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SeguimientoContextStoreContainer" CdmEntityContainer="Seguimiento_ACC_Entities">
+          <EntitySetMapping Name="areas"><EntityTypeMapping TypeName="SeguimientoContext.areas"><MappingFragment StoreEntitySet="areas">
+            <ScalarProperty Name="id_area" ColumnName="id_area" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="articulos"><EntityTypeMapping TypeName="SeguimientoContext.articulos"><MappingFragment StoreEntitySet="articulos">
+            <ScalarProperty Name="cantidad_fija" ColumnName="cantidad_fija" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+            <ScalarProperty Name="articulo" ColumnName="articulo" />
+            <ScalarProperty Name="dias_caducidad" ColumnName="dias_caducidad" />
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="peso_variado" ColumnName="peso_variado" />
+            <ScalarProperty Name="parcial" ColumnName="parcial" />
+            <ScalarProperty Name="leyenda" ColumnName="leyenda" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="articulos_unidades"><EntityTypeMapping TypeName="SeguimientoContext.articulos_unidades"><MappingFragment StoreEntitySet="articulos_unidades">
+            <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+            <ScalarProperty Name="id_unidad" ColumnName="id_unidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="bodegas"><EntityTypeMapping TypeName="SeguimientoContext.bodegas"><MappingFragment StoreEntitySet="bodegas">
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="bodega" ColumnName="bodega" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pesos_fijos"><EntityTypeMapping TypeName="SeguimientoContext.pesos_fijos"><MappingFragment StoreEntitySet="pesos_fijos">
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="proveedores"><EntityTypeMapping TypeName="SeguimientoContext.proveedores"><MappingFragment StoreEntitySet="proveedores">
+            <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+            <ScalarProperty Name="estatus" ColumnName="estatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="unidades"><EntityTypeMapping TypeName="SeguimientoContext.unidades"><MappingFragment StoreEntitySet="unidades">
+            <ScalarProperty Name="id_unidad" ColumnName="id_unidad" />
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="usuarios"><EntityTypeMapping TypeName="SeguimientoContext.usuarios"><MappingFragment StoreEntitySet="usuarios">
+            <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+            <ScalarProperty Name="username" ColumnName="username" />
+            <ScalarProperty Name="password" ColumnName="password" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+            <ScalarProperty Name="id_area" ColumnName="id_area" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="etiquetas">
+            <EntityTypeMapping TypeName="SeguimientoContext.etiquetas">
+              <MappingFragment StoreEntitySet="etiquetas">
+                <ScalarProperty Name="piezas" ColumnName="piezas" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="fecha_caducidad" ColumnName="fecha_caducidad" />
+                <ScalarProperty Name="fecha_empaque" ColumnName="fecha_empaque" />
+                <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="etiquetascol" ColumnName="etiquetascol" />
+                <ScalarProperty Name="tipo_etiqueta" ColumnName="tipo_etiqueta" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lotes">
+            <EntityTypeMapping TypeName="SeguimientoContext.lotes">
+              <MappingFragment StoreEntitySet="lotes">
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Modelo">
+        <EntityTypeShape EntityType="SeguimientoContext.areas" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.articulos" Width="1.5" PointX="2.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.articulos_unidades" Width="1.5" PointX="4.75" PointY="0.75" Height="1.4033821614583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.bodegas" Width="1.5" PointX="0.75" PointY="4.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.pesos_fijos" Width="1.5" PointX="2.75" PointY="4.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.proveedores" Width="1.5" PointX="4.75" PointY="3.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.unidades" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.usuarios" Width="1.5" PointX="6.75" PointY="3.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SeguimientoContext.etiquetas" Width="1.5" PointX="5.375" PointY="6.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="SeguimientoContext.lotes" Width="1.5" PointX="0.75" PointY="7.75" Height="1.5956835937499996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,1655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Seguimiento_Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Seguimiento_ModelStoreContainer">
+          <EntitySet Name="areas" EntityType="Seguimiento_Model.Store.areas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="articulos" EntityType="Seguimiento_Model.Store.articulos" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="bitacora" EntityType="Seguimiento_Model.Store.bitacora" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="bodegas" EntityType="Seguimiento_Model.Store.bodegas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_comandos_etiquetas" EntityType="Seguimiento_Model.Store.catalog_comandos_etiquetas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_estatus_etiquetas" EntityType="Seguimiento_Model.Store.catalog_estatus_etiquetas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_estatus_pedido" EntityType="Seguimiento_Model.Store.catalog_estatus_pedido" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_tipo_contenedores" EntityType="Seguimiento_Model.Store.catalog_tipo_contenedores" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_tipo_pedido" EntityType="Seguimiento_Model.Store.catalog_tipo_pedido" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_tipo_salida" EntityType="Seguimiento_Model.Store.catalog_tipo_salida" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_unidades" EntityType="Seguimiento_Model.Store.catalog_unidades" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="configuracion" EntityType="Seguimiento_Model.Store.configuracion" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="contenedores" EntityType="Seguimiento_Model.Store.contenedores" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="etiquetas" EntityType="Seguimiento_Model.Store.etiquetas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="etiquetas_traspasadas" EntityType="Seguimiento_Model.Store.etiquetas_traspasadas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="lotes" EntityType="Seguimiento_Model.Store.lotes" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="paquetes" EntityType="Seguimiento_Model.Store.paquetes" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="paquetes_det" EntityType="Seguimiento_Model.Store.paquetes_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="paquetes_traspasados" EntityType="Seguimiento_Model.Store.paquetes_traspasados" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_internos" EntityType="Seguimiento_Model.Store.pedidos_internos" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_internos_det" EntityType="Seguimiento_Model.Store.pedidos_internos_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_maestros_sucursales" EntityType="Seguimiento_Model.Store.pedidos_maestros_sucursales" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_maestros_sucursales_det" EntityType="Seguimiento_Model.Store.pedidos_maestros_sucursales_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_maestros_vendedores" EntityType="Seguimiento_Model.Store.pedidos_maestros_vendedores" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_maestros_vendedores_det" EntityType="Seguimiento_Model.Store.pedidos_maestros_vendedores_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_sucursales" EntityType="Seguimiento_Model.Store.pedidos_sucursales" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_sucursales_det" EntityType="Seguimiento_Model.Store.pedidos_sucursales_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_vendedores" EntityType="Seguimiento_Model.Store.pedidos_vendedores" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pedidos_vendedores_det" EntityType="Seguimiento_Model.Store.pedidos_vendedores_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="permisos" EntityType="Seguimiento_Model.Store.permisos" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="pesos_fijos" EntityType="Seguimiento_Model.Store.pesos_fijos" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="proveedores" EntityType="Seguimiento_Model.Store.proveedores" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="salidas" EntityType="Seguimiento_Model.Store.salidas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="salidas_det" EntityType="Seguimiento_Model.Store.salidas_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="salidas_sucursales" EntityType="Seguimiento_Model.Store.salidas_sucursales" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="salidas_sucursales_det" EntityType="Seguimiento_Model.Store.salidas_sucursales_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="salidas_vendedores" EntityType="Seguimiento_Model.Store.salidas_vendedores" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="salidas_vendedores_det" EntityType="Seguimiento_Model.Store.salidas_vendedores_det" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="usuarios" EntityType="Seguimiento_Model.Store.usuarios" store:Type="Tables" Schema="seguimiento_acc" />
+          <AssociationSet Name="fk_articulos" Association="Seguimiento_Model.Store.fk_articulos">
+            <End Role="articulos" EntitySet="articulos" />
+            <End Role="etiquetas_traspasadas" EntitySet="etiquetas_traspasadas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_clave_articulo" Association="Seguimiento_Model.Store.fk_clave_articulo">
+            <End Role="articulos" EntitySet="articulos" />
+            <End Role="etiquetas" EntitySet="etiquetas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estados" Association="Seguimiento_Model.Store.fk_estados">
+            <End Role="catalog_estatus_etiquetas" EntitySet="catalog_estatus_etiquetas" />
+            <End Role="etiquetas_traspasadas" EntitySet="etiquetas_traspasadas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estatus" Association="Seguimiento_Model.Store.fk_estatus">
+            <End Role="catalog_estatus_etiquetas" EntitySet="catalog_estatus_etiquetas" />
+            <End Role="etiquetas" EntitySet="etiquetas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_etiquetas" Association="Seguimiento_Model.Store.fk_etiquetas">
+            <End Role="etiquetas" EntitySet="etiquetas" />
+            <End Role="paquetes_det" EntitySet="paquetes_det" />
+          </AssociationSet>
+          <AssociationSet Name="fk_paquetes" Association="Seguimiento_Model.Store.fk_paquetes">
+            <End Role="paquetes" EntitySet="paquetes" />
+            <End Role="paquetes_det" EntitySet="paquetes_det" />
+          </AssociationSet>
+          <AssociationSet Name="fx_id_area" Association="Seguimiento_Model.Store.fx_id_area">
+            <End Role="areas" EntitySet="areas" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="id_area" />
+          </Key>
+          <Property Name="id_area" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="articulos">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="articulo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="dias_caducidad" Type="int" Nullable="false" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="peso_variado" Type="bit" Nullable="false" />
+          <Property Name="parcial" Type="bit" Nullable="false" />
+          <Property Name="leyenda" Type="bit" Nullable="false" />
+          <Property Name="cantidad_fija" Type="int" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="piezas" Type="int" />
+        </EntityType>
+        <EntityType Name="bitacora">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="acción" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="observaciones" Type="varchar" Nullable="false" />
+          <Property Name="fecha_hora" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_creador" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bodegas">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bodega" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="catalog_comandos_etiquetas">
+          <Key>
+            <PropertyRef Name="id_comando" />
+          </Key>
+          <Property Name="id_comando" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="etiqueta" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="comando" Type="text" Nullable="false" />
+          <Property Name="imagen_etiqueta" Type="longblob" Nullable="false" />
+        </EntityType>
+        <EntityType Name="catalog_estatus_etiquetas">
+          <Key>
+            <PropertyRef Name="id_estatus" />
+          </Key>
+          <Property Name="id_estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="catalog_estatus_pedido">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="catalog_tipo_contenedores">
+          <Key>
+            <PropertyRef Name="id_tipo_contenedor" />
+          </Key>
+          <Property Name="id_tipo_contenedor" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="catalog_tipo_pedido">
+          <Key>
+            <PropertyRef Name="id_tipo_pedido" />
+          </Key>
+          <Property Name="id_tipo_pedido" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="catalog_tipo_salida">
+          <Key>
+            <PropertyRef Name="id_tipo_salida" />
+          </Key>
+          <Property Name="id_tipo_salida" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="catalog_unidades">
+          <Key>
+            <PropertyRef Name="unidad" />
+          </Key>
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="configuracion">
+          <Key>
+            <PropertyRef Name="id_configuracion" />
+          </Key>
+          <Property Name="id_configuracion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="config" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="valor" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="contenedores">
+          <Key>
+            <PropertyRef Name="id_contenedor" />
+          </Key>
+          <Property Name="id_contenedor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="impresion_paquete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Name="id_etiqueta" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="varchar" MaxLength="14" />
+          <Property Name="tipo_etiqueta" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="id_proveedor" Type="int" />
+          <Property Name="id_lote" Type="uint" />
+          <Property Name="id_pedido" Type="uint" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="fecha_empaque" Type="datetime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="datetime" Nullable="false" />
+          <Property Name="id_bodega" Type="uint" Nullable="false" />
+          <Property Name="id_usuario" Type="uint" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="piezas" Type="uint" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="tipo_salida" Type="char" MaxLength="2" />
+          <Property Name="fecha_recepcion" Type="date" />
+          <Property Name="fecha_entrega" Type="date" />
+        </EntityType>
+        <EntityType Name="etiquetas_traspasadas">
+          <Key>
+            <PropertyRef Name="id_etiqueta_traspasada" />
+          </Key>
+          <Property Name="id_etiqueta_traspasada" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="tipo_etiqueta" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="id_lote_origen" Type="uint" Nullable="false" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="fecha_recepcion" Type="date" />
+          <Property Name="fecha_empaque" Type="datetime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="datetime" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="piezas" Type="uint" />
+          <Property Name="id_empresa_origen" Type="uint" Nullable="false" />
+          <Property Name="estado" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="numero_etiqueta_contenedor" Type="varchar" MaxLength="14" />
+          <Property Name="tipo_salida" Type="char" MaxLength="2" />
+          <Property Name="fecha_entrega" Type="date" />
+        </EntityType>
+        <EntityType Name="lotes">
+          <Key>
+            <PropertyRef Name="id_lote" />
+          </Key>
+          <Property Name="id_lote" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paquetes">
+          <Key>
+            <PropertyRef Name="id_paquete" />
+          </Key>
+          <Property Name="id_paquete" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="varchar" MaxLength="14" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="datetime" Nullable="false" />
+          <Property Name="clave_articulo" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="paquetes_det">
+          <Key>
+            <PropertyRef Name="id_detalle" />
+          </Key>
+          <Property Name="id_detalle" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_paquete" Type="int" Nullable="false" />
+          <Property Name="id_etiqueta" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paquetes_traspasados">
+          <Key>
+            <PropertyRef Name="id_paquete_traspasado" />
+          </Key>
+          <Property Name="id_paquete_traspasado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="estado" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="id_pedido_origen" Type="int" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="datetime" Nullable="false" />
+          <Property Name="id_empresa_origen" Type="uint" Nullable="false" />
+          <Property Name="id_pedido_salida" Type="int" />
+          <Property Name="clave_articulo" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="pedidos_internos">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_pedido" Type="varchar" MaxLength="15" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="tipo_pedido" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="dias_de_expiracion" Type="int" />
+        </EntityType>
+        <EntityType Name="pedidos_internos_det">
+          <Key>
+            <PropertyRef Name="id_pedidos_det" />
+          </Key>
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="id_pedidos_det" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_sucursales">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_sucursal" />
+          </Key>
+          <Property Name="id_pedido_maestro_sucursal" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ruta" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_creador" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_sucursales_det">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_sucursal_det" />
+          </Key>
+          <Property Name="id_pedido_maestro_sucursal_det" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_maestro_sucursal" Type="uint" Nullable="false" />
+          <Property Name="codigo_requisicion" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_vendedores">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_vendedores" />
+          </Key>
+          <Property Name="id_pedido_maestro_vendedores" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ruta" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_creador" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_vendedores_det">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_vendedores_det" />
+          </Key>
+          <Property Name="id_pedido_maestro_vendedores_det" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_maestro_vendedor" Type="uint" Nullable="false" />
+          <Property Name="codigo_requisicion" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos_sucursales">
+          <Key>
+            <PropertyRef Name="id_pedido_sucursal" />
+          </Key>
+          <Property Name="id_pedido_sucursal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_portal" Type="int" Nullable="false" />
+          <Property Name="codigo_pedido" Type="varchar" MaxLength="15" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_portal" Type="int" Nullable="false" />
+          <Property Name="fecha_a_surtir" Type="date" Nullable="false" />
+          <Property Name="tipo_pedido" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="observaciones" Type="text" />
+        </EntityType>
+        <EntityType Name="pedidos_sucursales_det">
+          <Key>
+            <PropertyRef Name="id_pedido_sucursal_det" />
+          </Key>
+          <Property Name="id_pedido_sucursal" Type="int" Nullable="false" />
+          <Property Name="id_pedido_sucursal_det" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="id_pedido_maestro_sucursales_det" Type="uint" />
+        </EntityType>
+        <EntityType Name="pedidos_vendedores">
+          <Key>
+            <PropertyRef Name="id_pedido_vendedor" />
+          </Key>
+          <Property Name="id_pedido_vendedor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_portal" Type="int" Nullable="false" />
+          <Property Name="codigo_pedido" Type="varchar" MaxLength="15" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_portal" Type="int" Nullable="false" />
+          <Property Name="id_cliente_portal" Type="int" Nullable="false" />
+          <Property Name="fecha_a_surtir" Type="date" Nullable="false" />
+          <Property Name="tipo_pedido" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="observaciones" Type="text" />
+        </EntityType>
+        <EntityType Name="pedidos_vendedores_det">
+          <Key>
+            <PropertyRef Name="id_pedido_vendedor_det" />
+          </Key>
+          <Property Name="id_pedido_vendedor_det" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_vendedor" Type="int" Nullable="false" />
+          <Property Name="id_pedido_maestro_vendedores_det" Type="uint" Nullable="false" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="id_bodega" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+          <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="permisos">
+          <Key>
+            <PropertyRef Name="id_permiso" />
+          </Key>
+          <Property Name="id_permiso" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="cadena_permisos" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="pesos_fijos">
+          <Key>
+            <PropertyRef Name="id_peso_fijo" />
+          </Key>
+          <Property Name="id_peso_fijo" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="cantidad" Type="decimal" Nullable="false" Scale="3" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salidas">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Name="id_salida" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_salida" Type="varchar" MaxLength="15" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_solicitante" Type="int" Nullable="false" />
+          <Property Name="id_usuario_responsable" Type="int" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="tipo_salida" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="destino" Type="varchar" MaxLength="50" />
+          <Property Name="folio_factura" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="salidas_det">
+          <Key>
+            <PropertyRef Name="id_salida_det" />
+          </Key>
+          <Property Name="id_salida_det" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_salida" Type="int" Nullable="false" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="cantidad" Type="decimal" Scale="3" />
+          <Property Name="unidad" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="salidas_sucursales">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Name="id_salida" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_salida" Type="varchar" MaxLength="20" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_solicitante" Type="int" Nullable="false" />
+          <Property Name="id_usuario_responsable" Type="int" Nullable="false" />
+          <Property Name="id_pedido_maestro_sucursales_det" Type="uint" Nullable="false" />
+          <Property Name="tipo_salida" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="destino" Type="varchar" MaxLength="50" />
+          <Property Name="folio_factura" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="salidas_sucursales_det">
+          <Key>
+            <PropertyRef Name="id_salida_det" />
+          </Key>
+          <Property Name="id_salida_det" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_salida" Type="int" Nullable="false" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="cantidad" Type="decimal" Scale="3" />
+          <Property Name="unidad" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="salidas_vendedores">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Name="id_salida" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_salida" Type="varchar" MaxLength="20" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_solicitante" Type="int" Nullable="false" />
+          <Property Name="id_usuario_responsable" Type="int" Nullable="false" />
+          <Property Name="id_pedido_maestro_vendedores_det" Type="uint" Nullable="false" />
+          <Property Name="tipo_salida" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="destino" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="salidas_vendedores_det">
+          <Key>
+            <PropertyRef Name="id_salida_det" />
+          </Key>
+          <Property Name="id_salida_det" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_salida" Type="int" Nullable="false" />
+          <Property Name="numero_etiqueta" Type="varchar" Nullable="false" MaxLength="14" />
+          <Property Name="cantidad" Type="decimal" Scale="3" />
+          <Property Name="unidad" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="id_area" Type="uint" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_articulos">
+          <End Role="articulos" Type="Seguimiento_Model.Store.articulos" Multiplicity="1" />
+          <End Role="etiquetas_traspasadas" Type="Seguimiento_Model.Store.etiquetas_traspasadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulos">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="etiquetas_traspasadas">
+              <PropertyRef Name="clave_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_clave_articulo">
+          <End Role="articulos" Type="Seguimiento_Model.Store.articulos" Multiplicity="1" />
+          <End Role="etiquetas" Type="Seguimiento_Model.Store.etiquetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulos">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="etiquetas">
+              <PropertyRef Name="clave_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estados">
+          <End Role="catalog_estatus_etiquetas" Type="Seguimiento_Model.Store.catalog_estatus_etiquetas" Multiplicity="1" />
+          <End Role="etiquetas_traspasadas" Type="Seguimiento_Model.Store.etiquetas_traspasadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalog_estatus_etiquetas">
+              <PropertyRef Name="id_estatus" />
+            </Principal>
+            <Dependent Role="etiquetas_traspasadas">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estatus">
+          <End Role="catalog_estatus_etiquetas" Type="Seguimiento_Model.Store.catalog_estatus_etiquetas" Multiplicity="1" />
+          <End Role="etiquetas" Type="Seguimiento_Model.Store.etiquetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalog_estatus_etiquetas">
+              <PropertyRef Name="id_estatus" />
+            </Principal>
+            <Dependent Role="etiquetas">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_etiquetas">
+          <End Role="etiquetas" Type="Seguimiento_Model.Store.etiquetas" Multiplicity="1" />
+          <End Role="paquetes_det" Type="Seguimiento_Model.Store.paquetes_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etiquetas">
+              <PropertyRef Name="id_etiqueta" />
+            </Principal>
+            <Dependent Role="paquetes_det">
+              <PropertyRef Name="id_etiqueta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_paquetes">
+          <End Role="paquetes" Type="Seguimiento_Model.Store.paquetes" Multiplicity="1" />
+          <End Role="paquetes_det" Type="Seguimiento_Model.Store.paquetes_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquetes">
+              <PropertyRef Name="id_paquete" />
+            </Principal>
+            <Dependent Role="paquetes_det">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fx_id_area">
+          <End Role="areas" Type="Seguimiento_Model.Store.areas" Multiplicity="1" />
+          <End Role="usuarios" Type="Seguimiento_Model.Store.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areas">
+              <PropertyRef Name="id_area" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Seguimiento_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Seguimiento_ACC_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="areas" EntityType="Seguimiento_Model.areas" />
+          <EntitySet Name="articulos" EntityType="Seguimiento_Model.articulos" />
+          <EntitySet Name="bodegas" EntityType="Seguimiento_Model.bodegas" />
+          <EntitySet Name="catalog_comandos_etiquetas" EntityType="Seguimiento_Model.catalog_comandos_etiquetas" />
+          <EntitySet Name="catalog_estatus_pedido" EntityType="Seguimiento_Model.catalog_estatus_pedido" />
+          <EntitySet Name="catalog_tipo_contenedores" EntityType="Seguimiento_Model.catalog_tipo_contenedores" />
+          <EntitySet Name="catalog_tipo_pedido" EntityType="Seguimiento_Model.catalog_tipo_pedido" />
+          <EntitySet Name="catalog_tipo_salida" EntityType="Seguimiento_Model.catalog_tipo_salida" />
+          <EntitySet Name="catalog_unidades" EntityType="Seguimiento_Model.catalog_unidades" />
+          <EntitySet Name="configuracion" EntityType="Seguimiento_Model.configuracion" />
+          <EntitySet Name="contenedores" EntityType="Seguimiento_Model.contenedores" />
+          <EntitySet Name="etiquetas" EntityType="Seguimiento_Model.etiquetas" />
+          <EntitySet Name="lotes" EntityType="Seguimiento_Model.lotes" />
+          <EntitySet Name="paquetes" EntityType="Seguimiento_Model.paquetes" />
+          <EntitySet Name="paquetes_det" EntityType="Seguimiento_Model.paquetes_det" />
+          <EntitySet Name="pedidos_internos" EntityType="Seguimiento_Model.pedidos_internos" />
+          <EntitySet Name="pedidos_internos_det" EntityType="Seguimiento_Model.pedidos_internos_det" />
+          <EntitySet Name="pedidos_sucursales" EntityType="Seguimiento_Model.pedidos_sucursales" />
+          <EntitySet Name="pedidos_sucursales_det" EntityType="Seguimiento_Model.pedidos_sucursales_det" />
+          <EntitySet Name="pedidos_vendedores" EntityType="Seguimiento_Model.pedidos_vendedores" />
+          <EntitySet Name="pedidos_vendedores_det" EntityType="Seguimiento_Model.pedidos_vendedores_det" />
+          <EntitySet Name="pesos_fijos" EntityType="Seguimiento_Model.pesos_fijos" />
+          <EntitySet Name="proveedores" EntityType="Seguimiento_Model.proveedores" />
+          <EntitySet Name="salidas" EntityType="Seguimiento_Model.salidas" />
+          <EntitySet Name="salidas_det" EntityType="Seguimiento_Model.salidas_det" />
+          <EntitySet Name="etiquetas_traspasadas" EntityType="Seguimiento_Model.etiquetas_traspasadas" />
+          <EntitySet Name="salidas_sucursales_det" EntityType="Seguimiento_Model.salidas_sucursales_det" />
+          <EntitySet Name="salidas_vendedores_det" EntityType="Seguimiento_Model.salidas_vendedores_det" />
+          <EntitySet Name="usuarios" EntityType="Seguimiento_Model.usuarios" />
+          <EntitySet Name="permisos" EntityType="Seguimiento_Model.permisos" />
+          <AssociationSet Name="fx_id_area" Association="Seguimiento_Model.fx_id_area">
+            <End Role="areas" EntitySet="areas" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <EntitySet Name="catalog_estatus_etiquetas" EntityType="Seguimiento_Model.catalog_estatus_etiquetas" />
+          <AssociationSet Name="fk_articulos" Association="Seguimiento_Model.fk_articulos">
+            <End Role="articulos" EntitySet="articulos" />
+            <End Role="etiquetas_traspasadas" EntitySet="etiquetas_traspasadas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_clave_articulo" Association="Seguimiento_Model.fk_clave_articulo">
+            <End Role="articulos" EntitySet="articulos" />
+            <End Role="etiquetas" EntitySet="etiquetas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estados" Association="Seguimiento_Model.fk_estados">
+            <End Role="catalog_estatus_etiquetas" EntitySet="catalog_estatus_etiquetas" />
+            <End Role="etiquetas_traspasadas" EntitySet="etiquetas_traspasadas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estatus" Association="Seguimiento_Model.fk_estatus">
+            <End Role="catalog_estatus_etiquetas" EntitySet="catalog_estatus_etiquetas" />
+            <End Role="etiquetas" EntitySet="etiquetas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_etiquetas" Association="Seguimiento_Model.fk_etiquetas">
+            <End Role="etiquetas" EntitySet="etiquetas" />
+            <End Role="paquetes_det" EntitySet="paquetes_det" />
+          </AssociationSet>
+          <AssociationSet Name="fk_paquetes" Association="Seguimiento_Model.fk_paquetes">
+            <End Role="paquetes" EntitySet="paquetes" />
+            <End Role="paquetes_det" EntitySet="paquetes_det" />
+          </AssociationSet>
+          <EntitySet Name="bitacora" EntityType="Seguimiento_Model.bitacora" />
+          <EntitySet Name="paquetes_traspasados" EntityType="Seguimiento_Model.paquetes_traspasados" />
+          <EntitySet Name="pedidos_maestros_vendedores" EntityType="Seguimiento_Model.pedidos_maestros_vendedores" />
+          <EntitySet Name="pedidos_maestros_vendedores_det" EntityType="Seguimiento_Model.pedidos_maestros_vendedores_det" />
+          <EntitySet Name="salidas_vendedores" EntityType="Seguimiento_Model.salidas_vendedores" />
+          <EntitySet Name="pedidos_maestros_sucursales" EntityType="Seguimiento_Model.pedidos_maestros_sucursales" />
+          <EntitySet Name="pedidos_maestros_sucursales_det" EntityType="Seguimiento_Model.pedidos_maestros_sucursales_det" />
+          <EntitySet Name="salidas_sucursales" EntityType="Seguimiento_Model.salidas_sucursales" />
+        </EntityContainer>
+        <EntityType Name="areas">
+          <Key>
+            <PropertyRef Name="id_area" />
+          </Key>
+          <Property Name="id_area" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="75" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="usuarios" Relationship="Seguimiento_Model.fx_id_area" FromRole="areas" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="articulos">
+          <Key>
+            <PropertyRef Name="clave" />
+          </Key>
+          <Property Name="clave" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="articulo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="dias_caducidad" Type="Int32" Nullable="false" />
+          <Property Name="id_bodega" Type="Int32" Nullable="false" />
+          <Property Name="peso_variado" Type="Boolean" Nullable="false" />
+          <Property Name="parcial" Type="Boolean" Nullable="false" />
+          <Property Name="leyenda" Type="Boolean" Nullable="false" />
+          <Property Name="cantidad_fija" Type="Int32" />
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="piezas" Type="Int32" />
+          <NavigationProperty Name="etiquetas_traspasadas" Relationship="Seguimiento_Model.fk_articulos" FromRole="articulos" ToRole="etiquetas_traspasadas" />
+          <NavigationProperty Name="etiquetas" Relationship="Seguimiento_Model.fk_clave_articulo" FromRole="articulos" ToRole="etiquetas" />
+        </EntityType>
+        <EntityType Name="bodegas">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bodega" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="catalog_comandos_etiquetas">
+          <Key>
+            <PropertyRef Name="id_comando" />
+          </Key>
+          <Property Name="id_comando" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="etiqueta" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="comando" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="imagen_etiqueta" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="catalog_estatus_pedido">
+          <Key>
+            <PropertyRef Name="id_status" />
+          </Key>
+          <Property Name="id_status" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="catalog_tipo_contenedores">
+          <Key>
+            <PropertyRef Name="id_tipo_contenedor" />
+          </Key>
+          <Property Name="id_tipo_contenedor" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="catalog_tipo_pedido">
+          <Key>
+            <PropertyRef Name="id_tipo_pedido" />
+          </Key>
+          <Property Name="id_tipo_pedido" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="catalog_tipo_salida">
+          <Key>
+            <PropertyRef Name="id_tipo_salida" />
+          </Key>
+          <Property Name="id_tipo_salida" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="catalog_unidades">
+          <Key>
+            <PropertyRef Name="unidad" />
+          </Key>
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="configuracion">
+          <Key>
+            <PropertyRef Name="id_configuracion" />
+          </Key>
+          <Property Name="id_configuracion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="config" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="valor" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="contenedores">
+          <Key>
+            <PropertyRef Name="id_contenedor" />
+          </Key>
+          <Property Name="id_contenedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="impresion_paquete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="etiquetas">
+          <Key>
+            <PropertyRef Name="id_etiqueta" />
+          </Key>
+          <Property Name="id_etiqueta" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+          <Property Name="tipo_etiqueta" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="id_lote" Type="Int64" />
+          <Property Name="id_pedido" Type="Int64" />
+          <Property Name="clave_articulo" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="fecha_empaque" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="DateTime" Nullable="false" />
+          <Property Name="id_bodega" Type="Int64" Nullable="false" />
+          <Property Name="id_usuario" Type="Int64" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="piezas" Type="Int64" />
+          <Property Name="estatus" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="tipo_salida" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="articulos" Relationship="Seguimiento_Model.fk_clave_articulo" FromRole="etiquetas" ToRole="articulos" />
+          <NavigationProperty Name="catalog_estatus_etiquetas" Relationship="Seguimiento_Model.fk_estatus" FromRole="etiquetas" ToRole="catalog_estatus_etiquetas" />
+          <NavigationProperty Name="paquetes_det" Relationship="Seguimiento_Model.fk_etiquetas" FromRole="etiquetas" ToRole="paquetes_det" />
+          <Property Type="DateTime" Name="fecha_recepcion" />
+          <Property Type="Int32" Name="id_proveedor" />
+          <Property Type="DateTime" Name="fecha_entrega" />
+        </EntityType>
+        <EntityType Name="lotes">
+          <Key>
+            <PropertyRef Name="id_lote" />
+          </Key>
+          <Property Name="id_lote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paquetes">
+          <Key>
+            <PropertyRef Name="id_paquete" />
+          </Key>
+          <Property Name="id_paquete" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_etiqueta" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+          <Property Name="estatus" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_caducidad" Type="DateTime" Nullable="false" />
+          <Property Type="String" Name="unidad" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="paquetes_det" Relationship="Seguimiento_Model.fk_paquetes" FromRole="paquetes" ToRole="paquetes_det" />
+          <Property Type="String" Name="clave_articulo" />
+        </EntityType>
+        <EntityType Name="paquetes_det">
+          <Key>
+            <PropertyRef Name="id_detalle" />
+          </Key>
+          <Property Name="id_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_paquete" Type="Int32" Nullable="false" />
+          <Property Name="id_etiqueta" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="etiquetas" Relationship="Seguimiento_Model.fk_etiquetas" FromRole="paquetes_det" ToRole="etiquetas" />
+          <NavigationProperty Name="paquetes" Relationship="Seguimiento_Model.fk_paquetes" FromRole="paquetes_det" ToRole="paquetes" />
+        </EntityType>
+        <EntityType Name="pedidos_internos">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_pedido" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="tipo_pedido" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="estatus" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="dias_de_expiracion" Type="Int32" />
+        </EntityType>
+        <EntityType Name="pedidos_internos_det">
+          <Key>
+            <PropertyRef Name="id_pedidos_det" />
+          </Key>
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="id_pedidos_det" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="id_bodega" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="pedidos_sucursales">
+          <Key>
+            <PropertyRef Name="id_pedido_sucursal" />
+          </Key>
+          <Property Name="id_pedido_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_portal" Type="Int32" Nullable="false" />
+          <Property Name="codigo_pedido" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="id_usuario_portal" Type="Int32" Nullable="false" />
+          <Property Name="fecha_a_surtir" Type="DateTime" Nullable="false" />
+          <Property Name="tipo_pedido" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="estatus" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="observaciones" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="pedidos_sucursales_det">
+          <Key>
+            <PropertyRef Name="id_pedido_sucursal_det" />
+          </Key>
+          <Property Name="id_pedido_sucursal" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido_sucursal_det" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="id_bodega" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Type="Int64" Name="id_pedido_maestro_sucursales_det" />
+        </EntityType>
+        <EntityType Name="pedidos_vendedores">
+          <Key>
+            <PropertyRef Name="id_pedido_vendedor" />
+          </Key>
+          <Property Name="id_pedido_vendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido_portal" Type="Int32" Nullable="false" />
+          <Property Name="codigo_pedido" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="id_usuario_portal" Type="Int32" Nullable="false" />
+          <Property Name="id_cliente_portal" Type="Int32" Nullable="false" />
+          <Property Name="fecha_a_surtir" Type="DateTime" Nullable="false" />
+          <Property Name="tipo_pedido" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="estatus" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="observaciones" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="pedidos_vendedores_det">
+          <Key>
+            <PropertyRef Name="id_pedido_vendedor_det" />
+          </Key>
+          <Property Name="id_pedido_vendedor" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido_vendedor_det" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="id_bodega" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="unidad" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Type="Int64" Name="id_pedido_maestro_vendedores_det" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pesos_fijos">
+          <Key>
+            <PropertyRef Name="id_peso_fijo" />
+          </Key>
+          <Property Name="id_peso_fijo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave_articulo" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salidas">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Name="id_salida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_salida" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="id_usuario_solicitante" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario_responsable" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="tipo_salida" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="destino" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="folio_factura" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="salidas_det">
+          <Key>
+            <PropertyRef Name="id_salida_det" />
+          </Key>
+          <Property Name="id_salida_det" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_salida" Type="Int32" Nullable="false" />
+          <Property Name="numero_etiqueta" Type="String" Nullable="false" MaxLength="14" Unicode="false" FixedLength="false" />
+          <Property Type="Decimal" Name="cantidad" />
+          <Property Type="String" Name="unidad" />
+        </EntityType>
+        <EntityType Name="etiquetas_traspasadas">
+          <Key>
+            <PropertyRef Name="id_etiqueta_traspasada" />
+          </Key>
+          <Property Type="Int64" Name="id_etiqueta_traspasada" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="numero_etiqueta" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="tipo_etiqueta" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_lote_origen" Nullable="false" />
+          <Property Type="String" Name="clave_articulo" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="fecha_empaque" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_caducidad" Nullable="false" />
+          <Property Type="Decimal" Name="cantidad" Nullable="false" />
+          <Property Type="String" Name="unidad" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="piezas" />
+          <Property Type="Int64" Name="id_empresa_origen" Nullable="false" />
+          <Property Type="String" Name="estado" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="id_bodega" Nullable="false" />
+          <Property Type="String" Name="numero_etiqueta_contenedor" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="tipo_salida" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="articulos" Relationship="Seguimiento_Model.fk_articulos" FromRole="etiquetas_traspasadas" ToRole="articulos" />
+          <NavigationProperty Name="catalog_estatus_etiquetas" Relationship="Seguimiento_Model.fk_estados" FromRole="etiquetas_traspasadas" ToRole="catalog_estatus_etiquetas" />
+          <Property Type="DateTime" Name="fecha_recepcion" />
+          <Property Type="DateTime" Name="fecha_entrega" />
+        </EntityType>
+        <EntityType Name="salidas_sucursales_det">
+          <Key>
+            <PropertyRef Name="id_salida_det" />
+          </Key>
+          <Property Type="Int32" Name="id_salida_det" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="id_salida" Nullable="false" />
+          <Property Type="String" Name="numero_etiqueta" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="cantidad" />
+          <Property Type="String" Name="unidad" />
+        </EntityType>
+        <EntityType Name="salidas_vendedores_det">
+          <Key>
+            <PropertyRef Name="id_salida_det" />
+          </Key>
+          <Property Type="Int32" Name="id_salida_det" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="id_salida" Nullable="false" />
+          <Property Type="String" Name="numero_etiqueta" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="cantidad" />
+          <Property Type="String" Name="unidad" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Type="Int32" Name="id_usuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_area" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="areas" Relationship="Seguimiento_Model.fx_id_area" FromRole="usuarios" ToRole="areas" />
+        </EntityType>
+        <EntityType Name="permisos">
+          <Key>
+            <PropertyRef Name="id_permiso" />
+          </Key>
+          <Property Type="Int64" Name="id_permiso" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="String" Name="cadena_permisos" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fx_id_area">
+          <End Type="Seguimiento_Model.areas" Role="areas" Multiplicity="1" />
+          <End Type="Seguimiento_Model.usuarios" Role="usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areas">
+              <PropertyRef Name="id_area" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="catalog_estatus_etiquetas">
+          <Key>
+            <PropertyRef Name="id_estatus" />
+          </Key>
+          <Property Type="String" Name="id_estatus" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="etiquetas_traspasadas" Relationship="Seguimiento_Model.fk_estados" FromRole="catalog_estatus_etiquetas" ToRole="etiquetas_traspasadas" />
+          <NavigationProperty Name="etiquetas" Relationship="Seguimiento_Model.fk_estatus" FromRole="catalog_estatus_etiquetas" ToRole="etiquetas" />
+        </EntityType>
+        <Association Name="fk_articulos">
+          <End Type="Seguimiento_Model.articulos" Role="articulos" Multiplicity="1" />
+          <End Type="Seguimiento_Model.etiquetas_traspasadas" Role="etiquetas_traspasadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulos">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="etiquetas_traspasadas">
+              <PropertyRef Name="clave_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_clave_articulo">
+          <End Type="Seguimiento_Model.articulos" Role="articulos" Multiplicity="1" />
+          <End Type="Seguimiento_Model.etiquetas" Role="etiquetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulos">
+              <PropertyRef Name="clave" />
+            </Principal>
+            <Dependent Role="etiquetas">
+              <PropertyRef Name="clave_articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estados">
+          <End Type="Seguimiento_Model.catalog_estatus_etiquetas" Role="catalog_estatus_etiquetas" Multiplicity="1" />
+          <End Type="Seguimiento_Model.etiquetas_traspasadas" Role="etiquetas_traspasadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalog_estatus_etiquetas">
+              <PropertyRef Name="id_estatus" />
+            </Principal>
+            <Dependent Role="etiquetas_traspasadas">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estatus">
+          <End Type="Seguimiento_Model.catalog_estatus_etiquetas" Role="catalog_estatus_etiquetas" Multiplicity="1" />
+          <End Type="Seguimiento_Model.etiquetas" Role="etiquetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalog_estatus_etiquetas">
+              <PropertyRef Name="id_estatus" />
+            </Principal>
+            <Dependent Role="etiquetas">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_etiquetas">
+          <End Type="Seguimiento_Model.etiquetas" Role="etiquetas" Multiplicity="1" />
+          <End Type="Seguimiento_Model.paquetes_det" Role="paquetes_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etiquetas">
+              <PropertyRef Name="id_etiqueta" />
+            </Principal>
+            <Dependent Role="paquetes_det">
+              <PropertyRef Name="id_etiqueta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_paquetes">
+          <End Type="Seguimiento_Model.paquetes" Role="paquetes" Multiplicity="1" />
+          <End Type="Seguimiento_Model.paquetes_det" Role="paquetes_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paquetes">
+              <PropertyRef Name="id_paquete" />
+            </Principal>
+            <Dependent Role="paquetes_det">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="bitacora">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Type="Int64" Name="id_evento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="numero_etiqueta" Nullable="false" />
+          <Property Type="String" Name="acción" Nullable="false" />
+          <Property Type="String" Name="observaciones" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_hora" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario_creador" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paquetes_traspasados">
+          <Key>
+            <PropertyRef Name="id_paquete_traspasado" />
+          </Key>
+          <Property Type="Int32" Name="id_paquete_traspasado" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="numero_etiqueta" Nullable="false" />
+          <Property Type="String" Name="estado" Nullable="false" />
+          <Property Type="Decimal" Name="cantidad" Nullable="false" />
+          <Property Type="String" Name="unidad" Nullable="false" />
+          <Property Type="Int32" Name="id_pedido_origen" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_caducidad" Nullable="false" />
+          <Property Type="Int64" Name="id_empresa_origen" Nullable="false" />
+          <Property Type="Int32" Name="id_pedido_salida" />
+          <Property Type="String" Name="clave_articulo" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_vendedores">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_vendedores" />
+          </Key>
+          <Property Type="Int64" Name="id_pedido_maestro_vendedores" Nullable="false" />
+          <Property Type="String" Name="ruta" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario_creador" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_vendedores_det">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_vendedores_det" />
+          </Key>
+          <Property Type="Int64" Name="id_pedido_maestro_vendedores_det" Nullable="false" />
+          <Property Type="String" Name="codigo_requisicion" Nullable="false" />
+          <Property Type="Int32" Name="id_bodega" Nullable="false" />
+          <Property Type="Int64" Name="id_pedido_maestro_vendedor" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salidas_vendedores">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Type="Int32" Name="id_salida" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="codigo_salida" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario_solicitante" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario_responsable" Nullable="false" />
+          <Property Type="Int64" Name="id_pedido_maestro_vendedores_det" Nullable="false" />
+          <Property Type="String" Name="tipo_salida" Nullable="false" />
+          <Property Type="String" Name="destino" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_sucursales">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_sucursal" />
+          </Key>
+          <Property Type="Int64" Name="id_pedido_maestro_sucursal" Nullable="false" />
+          <Property Type="String" Name="ruta" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario_creador" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedidos_maestros_sucursales_det">
+          <Key>
+            <PropertyRef Name="id_pedido_maestro_sucursal_det" />
+          </Key>
+          <Property Type="Int64" Name="id_pedido_maestro_sucursal_det" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_pedido_maestro_sucursal" Nullable="false" />
+          <Property Type="String" Name="codigo_requisicion" Nullable="false" />
+          <Property Type="Int32" Name="id_bodega" Nullable="false" />
+        </EntityType>
+        <EntityType Name="salidas_sucursales">
+          <Key>
+            <PropertyRef Name="id_salida" />
+          </Key>
+          <Property Type="Int32" Name="id_salida" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="codigo_salida" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario_solicitante" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario_responsable" Nullable="false" />
+          <Property Type="Int64" Name="id_pedido_maestro_sucursales_det" Nullable="false" />
+          <Property Type="String" Name="tipo_salida" Nullable="false" />
+          <Property Type="String" Name="destino" />
+          <Property Type="String" Name="folio_factura" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Seguimiento_ModelStoreContainer" CdmEntityContainer="Seguimiento_ACC_Entities">
+          <EntitySetMapping Name="areas"><EntityTypeMapping TypeName="Seguimiento_Model.areas"><MappingFragment StoreEntitySet="areas">
+            <ScalarProperty Name="id_area" ColumnName="id_area" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="articulos"><EntityTypeMapping TypeName="Seguimiento_Model.articulos"><MappingFragment StoreEntitySet="articulos">
+            <ScalarProperty Name="clave" ColumnName="clave" />
+            <ScalarProperty Name="articulo" ColumnName="articulo" />
+            <ScalarProperty Name="dias_caducidad" ColumnName="dias_caducidad" />
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="peso_variado" ColumnName="peso_variado" />
+            <ScalarProperty Name="parcial" ColumnName="parcial" />
+            <ScalarProperty Name="leyenda" ColumnName="leyenda" />
+            <ScalarProperty Name="cantidad_fija" ColumnName="cantidad_fija" />
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+            <ScalarProperty Name="piezas" ColumnName="piezas" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="bodegas"><EntityTypeMapping TypeName="Seguimiento_Model.bodegas"><MappingFragment StoreEntitySet="bodegas">
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="bodega" ColumnName="bodega" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="catalog_comandos_etiquetas"><EntityTypeMapping TypeName="Seguimiento_Model.catalog_comandos_etiquetas"><MappingFragment StoreEntitySet="catalog_comandos_etiquetas">
+            <ScalarProperty Name="id_comando" ColumnName="id_comando" />
+            <ScalarProperty Name="etiqueta" ColumnName="etiqueta" />
+            <ScalarProperty Name="comando" ColumnName="comando" />
+            <ScalarProperty Name="imagen_etiqueta" ColumnName="imagen_etiqueta" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="catalog_estatus_pedido"><EntityTypeMapping TypeName="Seguimiento_Model.catalog_estatus_pedido"><MappingFragment StoreEntitySet="catalog_estatus_pedido">
+            <ScalarProperty Name="id_status" ColumnName="id_status" />
+            <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="catalog_tipo_contenedores"><EntityTypeMapping TypeName="Seguimiento_Model.catalog_tipo_contenedores"><MappingFragment StoreEntitySet="catalog_tipo_contenedores">
+            <ScalarProperty Name="id_tipo_contenedor" ColumnName="id_tipo_contenedor" />
+            <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="catalog_tipo_pedido"><EntityTypeMapping TypeName="Seguimiento_Model.catalog_tipo_pedido"><MappingFragment StoreEntitySet="catalog_tipo_pedido">
+            <ScalarProperty Name="id_tipo_pedido" ColumnName="id_tipo_pedido" />
+            <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="catalog_tipo_salida"><EntityTypeMapping TypeName="Seguimiento_Model.catalog_tipo_salida"><MappingFragment StoreEntitySet="catalog_tipo_salida">
+            <ScalarProperty Name="id_tipo_salida" ColumnName="id_tipo_salida" />
+            <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="catalog_unidades"><EntityTypeMapping TypeName="Seguimiento_Model.catalog_unidades"><MappingFragment StoreEntitySet="catalog_unidades">
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="configuracion"><EntityTypeMapping TypeName="Seguimiento_Model.configuracion"><MappingFragment StoreEntitySet="configuracion">
+            <ScalarProperty Name="id_configuracion" ColumnName="id_configuracion" />
+            <ScalarProperty Name="config" ColumnName="config" />
+            <ScalarProperty Name="valor" ColumnName="valor" />
+            <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="contenedores"><EntityTypeMapping TypeName="Seguimiento_Model.contenedores"><MappingFragment StoreEntitySet="contenedores">
+            <ScalarProperty Name="id_contenedor" ColumnName="id_contenedor" />
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+            <ScalarProperty Name="tipo" ColumnName="tipo" />
+            <ScalarProperty Name="impresion_paquete" ColumnName="impresion_paquete" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="etiquetas"><EntityTypeMapping TypeName="Seguimiento_Model.etiquetas"><MappingFragment StoreEntitySet="etiquetas">
+            <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_recepcion" ColumnName="fecha_recepcion" />
+                <ScalarProperty Name="tipo_salida" ColumnName="tipo_salida" />
+                <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+            <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+            <ScalarProperty Name="tipo_etiqueta" ColumnName="tipo_etiqueta" />
+            <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+            <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="fecha_empaque" ColumnName="fecha_empaque" />
+            <ScalarProperty Name="fecha_caducidad" ColumnName="fecha_caducidad" />
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+            <ScalarProperty Name="piezas" ColumnName="piezas" />
+            <ScalarProperty Name="estatus" ColumnName="estatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="lotes"><EntityTypeMapping TypeName="Seguimiento_Model.lotes"><MappingFragment StoreEntitySet="lotes">
+            <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+            <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+            <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="paquetes"><EntityTypeMapping TypeName="Seguimiento_Model.paquetes"><MappingFragment StoreEntitySet="paquetes">
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="id_paquete" ColumnName="id_paquete" />
+            <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+            <ScalarProperty Name="estatus" ColumnName="estatus" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+            <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+            <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+            <ScalarProperty Name="fecha_caducidad" ColumnName="fecha_caducidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="paquetes_det"><EntityTypeMapping TypeName="Seguimiento_Model.paquetes_det"><MappingFragment StoreEntitySet="paquetes_det">
+            <ScalarProperty Name="id_detalle" ColumnName="id_detalle" />
+            <ScalarProperty Name="id_paquete" ColumnName="id_paquete" />
+            <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pedidos_internos"><EntityTypeMapping TypeName="Seguimiento_Model.pedidos_internos"><MappingFragment StoreEntitySet="pedidos_internos">
+            <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+            <ScalarProperty Name="codigo_pedido" ColumnName="codigo_pedido" />
+            <ScalarProperty Name="fecha" ColumnName="fecha" />
+            <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+            <ScalarProperty Name="tipo_pedido" ColumnName="tipo_pedido" />
+            <ScalarProperty Name="estatus" ColumnName="estatus" />
+            <ScalarProperty Name="dias_de_expiracion" ColumnName="dias_de_expiracion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pedidos_internos_det"><EntityTypeMapping TypeName="Seguimiento_Model.pedidos_internos_det"><MappingFragment StoreEntitySet="pedidos_internos_det">
+            <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+            <ScalarProperty Name="id_pedidos_det" ColumnName="id_pedidos_det" />
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pedidos_sucursales"><EntityTypeMapping TypeName="Seguimiento_Model.pedidos_sucursales"><MappingFragment StoreEntitySet="pedidos_sucursales">
+            <ScalarProperty Name="id_pedido_sucursal" ColumnName="id_pedido_sucursal" />
+            <ScalarProperty Name="id_pedido_portal" ColumnName="id_pedido_portal" />
+            <ScalarProperty Name="codigo_pedido" ColumnName="codigo_pedido" />
+            <ScalarProperty Name="fecha" ColumnName="fecha" />
+            <ScalarProperty Name="id_usuario_portal" ColumnName="id_usuario_portal" />
+            <ScalarProperty Name="fecha_a_surtir" ColumnName="fecha_a_surtir" />
+            <ScalarProperty Name="tipo_pedido" ColumnName="tipo_pedido" />
+            <ScalarProperty Name="estatus" ColumnName="estatus" />
+            <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pedidos_sucursales_det"><EntityTypeMapping TypeName="Seguimiento_Model.pedidos_sucursales_det"><MappingFragment StoreEntitySet="pedidos_sucursales_det">
+            <ScalarProperty Name="id_pedido_maestro_sucursales_det" ColumnName="id_pedido_maestro_sucursales_det" />
+                <ScalarProperty Name="id_pedido_sucursal" ColumnName="id_pedido_sucursal" />
+            <ScalarProperty Name="id_pedido_sucursal_det" ColumnName="id_pedido_sucursal_det" />
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pedidos_vendedores"><EntityTypeMapping TypeName="Seguimiento_Model.pedidos_vendedores"><MappingFragment StoreEntitySet="pedidos_vendedores">
+            <ScalarProperty Name="id_pedido_vendedor" ColumnName="id_pedido_vendedor" />
+            <ScalarProperty Name="id_pedido_portal" ColumnName="id_pedido_portal" />
+            <ScalarProperty Name="codigo_pedido" ColumnName="codigo_pedido" />
+            <ScalarProperty Name="fecha" ColumnName="fecha" />
+            <ScalarProperty Name="id_usuario_portal" ColumnName="id_usuario_portal" />
+            <ScalarProperty Name="id_cliente_portal" ColumnName="id_cliente_portal" />
+            <ScalarProperty Name="fecha_a_surtir" ColumnName="fecha_a_surtir" />
+            <ScalarProperty Name="tipo_pedido" ColumnName="tipo_pedido" />
+            <ScalarProperty Name="estatus" ColumnName="estatus" />
+            <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pedidos_vendedores_det"><EntityTypeMapping TypeName="Seguimiento_Model.pedidos_vendedores_det"><MappingFragment StoreEntitySet="pedidos_vendedores_det">
+            <ScalarProperty Name="id_pedido_maestro_vendedores_det" ColumnName="id_pedido_maestro_vendedores_det" />
+                <ScalarProperty Name="id_pedido_vendedor" ColumnName="id_pedido_vendedor" />
+            <ScalarProperty Name="id_pedido_vendedor_det" ColumnName="id_pedido_vendedor_det" />
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="pesos_fijos"><EntityTypeMapping TypeName="Seguimiento_Model.pesos_fijos"><MappingFragment StoreEntitySet="pesos_fijos">
+            <ScalarProperty Name="id_peso_fijo" ColumnName="id_peso_fijo" />
+            <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+            <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="proveedores"><EntityTypeMapping TypeName="Seguimiento_Model.proveedores"><MappingFragment StoreEntitySet="proveedores">
+            <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+            <ScalarProperty Name="estatus" ColumnName="estatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="salidas"><EntityTypeMapping TypeName="Seguimiento_Model.salidas"><MappingFragment StoreEntitySet="salidas">
+            <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+            <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
+            <ScalarProperty Name="fecha" ColumnName="fecha" />
+            <ScalarProperty Name="id_usuario_solicitante" ColumnName="id_usuario_solicitante" />
+            <ScalarProperty Name="id_usuario_responsable" ColumnName="id_usuario_responsable" />
+            <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+            <ScalarProperty Name="tipo_salida" ColumnName="tipo_salida" />
+            <ScalarProperty Name="destino" ColumnName="destino" />
+            <ScalarProperty Name="folio_factura" ColumnName="folio_factura" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="salidas_det"><EntityTypeMapping TypeName="Seguimiento_Model.salidas_det"><MappingFragment StoreEntitySet="salidas_det">
+            <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_salida_det" ColumnName="id_salida_det" />
+            <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+            <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="etiquetas_traspasadas">
+            <EntityTypeMapping TypeName="Seguimiento_Model.etiquetas_traspasadas">
+              <MappingFragment StoreEntitySet="etiquetas_traspasadas">
+                <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+                <ScalarProperty Name="fecha_recepcion" ColumnName="fecha_recepcion" />
+                <ScalarProperty Name="tipo_salida" ColumnName="tipo_salida" />
+                <ScalarProperty Name="numero_etiqueta_contenedor" ColumnName="numero_etiqueta_contenedor" />
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_empresa_origen" ColumnName="id_empresa_origen" />
+                <ScalarProperty Name="piezas" ColumnName="piezas" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="fecha_caducidad" ColumnName="fecha_caducidad" />
+                <ScalarProperty Name="fecha_empaque" ColumnName="fecha_empaque" />
+                <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+                <ScalarProperty Name="id_lote_origen" ColumnName="id_lote_origen" />
+                <ScalarProperty Name="tipo_etiqueta" ColumnName="tipo_etiqueta" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="id_etiqueta_traspasada" ColumnName="id_etiqueta_traspasada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salidas_sucursales_det">
+            <EntityTypeMapping TypeName="Seguimiento_Model.salidas_sucursales_det">
+              <MappingFragment StoreEntitySet="salidas_sucursales_det">
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+                <ScalarProperty Name="id_salida_det" ColumnName="id_salida_det" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salidas_vendedores_det">
+            <EntityTypeMapping TypeName="Seguimiento_Model.salidas_vendedores_det">
+              <MappingFragment StoreEntitySet="salidas_vendedores_det">
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+                <ScalarProperty Name="id_salida_det" ColumnName="id_salida_det" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="Seguimiento_Model.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_area" ColumnName="id_area" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permisos">
+            <EntityTypeMapping TypeName="Seguimiento_Model.permisos">
+              <MappingFragment StoreEntitySet="permisos">
+                <ScalarProperty Name="cadena_permisos" ColumnName="cadena_permisos" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_permiso" ColumnName="id_permiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catalog_estatus_etiquetas">
+            <EntityTypeMapping TypeName="Seguimiento_Model.catalog_estatus_etiquetas">
+              <MappingFragment StoreEntitySet="catalog_estatus_etiquetas">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_estatus" ColumnName="id_estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bitacora">
+            <EntityTypeMapping TypeName="Seguimiento_Model.bitacora">
+              <MappingFragment StoreEntitySet="bitacora">
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="acción" ColumnName="acción" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paquetes_traspasados">
+            <EntityTypeMapping TypeName="Seguimiento_Model.paquetes_traspasados">
+              <MappingFragment StoreEntitySet="paquetes_traspasados">
+                <ScalarProperty Name="clave_articulo" ColumnName="clave_articulo" />
+                <ScalarProperty Name="id_pedido_salida" ColumnName="id_pedido_salida" />
+                <ScalarProperty Name="id_empresa_origen" ColumnName="id_empresa_origen" />
+                <ScalarProperty Name="fecha_caducidad" ColumnName="fecha_caducidad" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_pedido_origen" ColumnName="id_pedido_origen" />
+                <ScalarProperty Name="unidad" ColumnName="unidad" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="id_paquete_traspasado" ColumnName="id_paquete_traspasado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos_maestros_vendedores">
+            <EntityTypeMapping TypeName="Seguimiento_Model.pedidos_maestros_vendedores">
+              <MappingFragment StoreEntitySet="pedidos_maestros_vendedores">
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="id_pedido_maestro_vendedores" ColumnName="id_pedido_maestro_vendedores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos_maestros_vendedores_det">
+            <EntityTypeMapping TypeName="Seguimiento_Model.pedidos_maestros_vendedores_det">
+              <MappingFragment StoreEntitySet="pedidos_maestros_vendedores_det">
+                <ScalarProperty Name="id_pedido_maestro_vendedor" ColumnName="id_pedido_maestro_vendedor" />
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="codigo_requisicion" ColumnName="codigo_requisicion" />
+                <ScalarProperty Name="id_pedido_maestro_vendedores_det" ColumnName="id_pedido_maestro_vendedores_det" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salidas_vendedores">
+            <EntityTypeMapping TypeName="Seguimiento_Model.salidas_vendedores">
+              <MappingFragment StoreEntitySet="salidas_vendedores">
+                <ScalarProperty Name="destino" ColumnName="destino" />
+                <ScalarProperty Name="tipo_salida" ColumnName="tipo_salida" />
+                <ScalarProperty Name="id_pedido_maestro_vendedores_det" ColumnName="id_pedido_maestro_vendedores_det" />
+                <ScalarProperty Name="id_usuario_responsable" ColumnName="id_usuario_responsable" />
+                <ScalarProperty Name="id_usuario_solicitante" ColumnName="id_usuario_solicitante" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
+                <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos_maestros_sucursales">
+            <EntityTypeMapping TypeName="Seguimiento_Model.pedidos_maestros_sucursales">
+              <MappingFragment StoreEntitySet="pedidos_maestros_sucursales">
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="id_pedido_maestro_sucursal" ColumnName="id_pedido_maestro_sucursal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedidos_maestros_sucursales_det">
+            <EntityTypeMapping TypeName="Seguimiento_Model.pedidos_maestros_sucursales_det">
+              <MappingFragment StoreEntitySet="pedidos_maestros_sucursales_det">
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="codigo_requisicion" ColumnName="codigo_requisicion" />
+                <ScalarProperty Name="id_pedido_maestro_sucursal" ColumnName="id_pedido_maestro_sucursal" />
+                <ScalarProperty Name="id_pedido_maestro_sucursal_det" ColumnName="id_pedido_maestro_sucursal_det" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salidas_sucursales">
+            <EntityTypeMapping TypeName="Seguimiento_Model.salidas_sucursales">
+              <MappingFragment StoreEntitySet="salidas_sucursales">
+                <ScalarProperty Name="folio_factura" ColumnName="folio_factura" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
+                <ScalarProperty Name="tipo_salida" ColumnName="tipo_salida" />
+                <ScalarProperty Name="id_pedido_maestro_sucursales_det" ColumnName="id_pedido_maestro_sucursales_det" />
+                <ScalarProperty Name="id_usuario_responsable" ColumnName="id_usuario_responsable" />
+                <ScalarProperty Name="id_usuario_solicitante" ColumnName="id_usuario_solicitante" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
+                <ScalarProperty Name="id_salida" ColumnName="id_salida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Seguimiento">
+        <EntityTypeShape EntityType="Seguimiento_Model.areas" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.articulos" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.bodegas" Width="1.5" PointX="4.75" PointY="0.75" Height="1.4033821614583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_comandos_etiquetas" Width="1.5" PointX="0.75" PointY="4.75" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_estatus_pedido" Width="1.5" PointX="2.75" PointY="4.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_tipo_contenedores" Width="1.5" PointX="4.75" PointY="3.75" Height="1.4033821614583322" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_tipo_pedido" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_tipo_salida" Width="1.5" PointX="6.75" PointY="3.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_unidades" Width="1.5" PointX="4.75" PointY="6.75" Height="1.2110807291666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.configuracion" Width="1.5" PointX="6.75" PointY="6.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.contenedores" Width="1.5" PointX="0.75" PointY="7.75" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.etiquetas" Width="1.5" PointX="8.75" PointY="0.75" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.lotes" Width="1.5" PointX="2.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.paquetes" Width="1.5" PointX="8.75" PointY="5.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.paquetes_det" Width="1.5" PointX="4.75" PointY="9.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_internos" Width="1.5" PointX="6.75" PointY="9.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_internos_det" Width="1.5" PointX="8.75" PointY="9.75" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_sucursales" Width="1.5" PointX="10.75" PointY="0.75" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_sucursales_det" Width="1.5" PointX="10.75" PointY="4.75" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_vendedores" Width="1.5" PointX="10.75" PointY="7.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_vendedores_det" Width="1.5" PointX="0.75" PointY="11.75" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pesos_fijos" Width="1.5" PointX="10.75" PointY="11.75" Height="1.5956835937500067" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.proveedores" Width="1.5" PointX="12.75" PointY="0.75" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.salidas" Width="1.5" PointX="2.75" PointY="12.75" Height="2.7494921875000102" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.salidas_det" Width="1.5" PointX="12.75" PointY="3.75" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="Seguimiento_Model.etiquetas_traspasadas" Width="1.5" PointX="5.375" PointY="13.75" Height="3.7109993489583246" />
+        <EntityTypeShape EntityType="Seguimiento_Model.salidas_sucursales_det" Width="2.125" PointX="13.125" PointY="9.75" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Seguimiento_Model.salidas_vendedores_det" Width="3.125" PointX="9.375" PointY="14.75" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="Seguimiento_Model.usuarios" Width="1.5" PointX="13.375" PointY="6.75" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="Seguimiento_Model.permisos" Width="1.5" PointX="15.375" PointY="0.75" Height="1.5956835937500102" />
+        <AssociationConnector Association="Seguimiento_Model.fx_id_area" >
+          <ConnectorPoint PointX="1.5" PointY="2.34568359375" />
+          <ConnectorPoint PointX="1.5" PointY="4.5" />
+          <ConnectorPoint PointX="4.5" PointY="4.5" />
+          <ConnectorPoint PointX="4.5" PointY="9.0667936197916656" />
+          <ConnectorPoint PointX="6.416666666666667" PointY="9.0667936197916656" />
+          <ConnectorPoint PointX="6.583333333333333" PointY="9.0667936197916656" />
+          <ConnectorPoint PointX="8.3539733589743577" PointY="9.0667936197916656" />
+          <ConnectorPoint PointX="8.5206400256410255" PointY="9.0667936197916656" />
+          <ConnectorPoint PointX="10.5" PointY="9.0667936197916656" />
+          <ConnectorPoint PointX="10.5" PointY="7.5" />
+          <ConnectorPoint PointX="12.666666666666666" PointY="7.4999999999999991" />
+          <ConnectorPoint PointX="12.833333333333334" PointY="7.5" />
+          <ConnectorPoint PointX="13" PointY="7.5" />
+          <ConnectorPoint PointX="13" PointY="7.9324446614583337" />
+          <ConnectorPoint PointX="13.375" PointY="7.9324446614583337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_estatus_etiquetas" Width="1.5" PointX="15.375" PointY="3.875" Height="1.7879850260416674" />
+        <AssociationConnector Association="Seguimiento_Model.fk_articulos" >
+          <ConnectorPoint PointX="4.25" PointY="3.1552819232063607" />
+          <ConnectorPoint PointX="6.5" PointY="3.1552819232063607" />
+          <ConnectorPoint PointX="6.5" PointY="13.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="Seguimiento_Model.fk_clave_articulo" >
+          <ConnectorPoint PointX="4.25" PointY="2.6230820423323467" />
+          <ConnectorPoint PointX="8.75" PointY="2.6230820423323467" />
+        </AssociationConnector>
+        <AssociationConnector Association="Seguimiento_Model.fk_estados" >
+          <ConnectorPoint PointX="16.125" PointY="5.6629850260416674" />
+          <ConnectorPoint PointX="16.125" PointY="6.5" />
+          <ConnectorPoint PointX="12.75" PointY="6.5" />
+          <ConnectorPoint PointX="12.75" PointY="16.980286458333332" />
+          <ConnectorPoint PointX="7.25" PointY="16.980286458333332" />
+          <ConnectorPoint PointX="7.25" PointY="15.893951822916666" />
+          <ConnectorPoint PointX="6.875" PointY="15.893951822916666" />
+        </AssociationConnector>
+        <AssociationConnector Association="Seguimiento_Model.fk_estatus" >
+          <ConnectorPoint PointX="16.125" PointY="3.875" />
+          <ConnectorPoint PointX="16.125" PointY="2.9901025390625" />
+          <ConnectorPoint PointX="12.5" PointY="2.9901025390625" />
+          <ConnectorPoint PointX="12.5" PointY="3.7494921875000031" />
+          <ConnectorPoint PointX="10.625" PointY="3.7494921875000031" />
+          <ConnectorPoint PointX="10.625" PointY="2.9901025390625" />
+          <ConnectorPoint PointX="10.25" PointY="2.9901025390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Seguimiento_Model.fk_etiquetas" >
+          <ConnectorPoint PointX="8.75" PointY="3.4213909616031803" />
+          <ConnectorPoint PointX="6.583333333333333" PointY="3.42139096160318" />
+          <ConnectorPoint PointX="6.416666666666667" PointY="3.4213909616031803" />
+          <ConnectorPoint PointX="4.5625" PointY="3.4213909616031803" />
+          <ConnectorPoint PointX="4.5625" PointY="9.375" />
+          <ConnectorPoint PointX="5.5" PointY="9.375" />
+          <ConnectorPoint PointX="5.5" PointY="9.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="Seguimiento_Model.fk_paquetes" >
+          <ConnectorPoint PointX="8.75" PointY="8.4994921875" />
+          <ConnectorPoint PointX="8.375" PointY="8.8744921875" />
+          <ConnectorPoint PointX="6.583333333333333" PointY="8.8744921875" />
+          <ConnectorPoint PointX="6.416666666666667" PointY="8.8744921875" />
+          <ConnectorPoint PointX="5.906252" PointY="8.8744921875" />
+          <ConnectorPoint PointX="5.906252" PointY="9.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Seguimiento_Model.bitacora" Width="1.5" PointX="15.375" PointY="10.75" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="Seguimiento_Model.paquetes_traspasados" Width="1.5" PointX="15.375" PointY="6.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_maestros_vendedores" Width="2.875" PointX="0.75" PointY="16.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_maestros_vendedores_det" Width="2.875" PointX="0.75" PointY="18.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Seguimiento_Model.salidas_vendedores" Width="3" PointX="13.375" PointY="13.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_maestros_sucursales" Width="1.5" PointX="17.375" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Seguimiento_Model.pedidos_maestros_sucursales_det" Width="1.5" PointX="17.375" PointY="3.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Seguimiento_Model.salidas_sucursales" Width="1.5" PointX="17.375" PointY="6.75" Height="2.7494921875000102" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
