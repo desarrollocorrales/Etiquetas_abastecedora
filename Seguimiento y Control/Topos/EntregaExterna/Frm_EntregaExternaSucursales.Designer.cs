@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.colCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUnidad1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescripcionEstado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFecha_Caducidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridRequisicion = new DevExpress.XtraGrid.GridControl();
             this.articuloRequerirBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvRequisicion = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -246,7 +248,19 @@
             this.colArticulo,
             this.colCantidad,
             this.colUnidad1,
-            this.colDescripcionEstado});
+            this.colDescripcionEstado,
+            this.colFecha_Caducidad});
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Red;
+            styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.White;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Appearance.Options.UseFont = true;
+            styleFormatCondition1.Appearance.Options.UseForeColor = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition1.Expression = "Today() > [Fecha_Caducidad]";
+            this.gvMateriaPrima.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
+            styleFormatCondition1});
             this.gvMateriaPrima.GridControl = this.gridMateriaPrima;
             this.gvMateriaPrima.GroupCount = 1;
             this.gvMateriaPrima.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -273,8 +287,6 @@
             this.colArticulo.Caption = "Articulo";
             this.colArticulo.FieldName = "Articulo";
             this.colArticulo.Name = "colArticulo";
-            this.colArticulo.Visible = true;
-            this.colArticulo.VisibleIndex = 1;
             // 
             // colCantidad
             // 
@@ -300,6 +312,14 @@
             this.colDescripcionEstado.OptionsColumn.ReadOnly = true;
             this.colDescripcionEstado.Visible = true;
             this.colDescripcionEstado.VisibleIndex = 3;
+            // 
+            // colFecha_Caducidad
+            // 
+            this.colFecha_Caducidad.Caption = "Fecha de caducidad";
+            this.colFecha_Caducidad.FieldName = "Fecha_Caducidad";
+            this.colFecha_Caducidad.Name = "colFecha_Caducidad";
+            this.colFecha_Caducidad.Visible = true;
+            this.colFecha_Caducidad.VisibleIndex = 4;
             // 
             // gridRequisicion
             // 
@@ -566,5 +586,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colarticulo_a_requerir;
         private DevExpress.XtraGrid.Columns.GridColumn colunidad;
         private System.Windows.Forms.Button btnCambiar;
+        private DevExpress.XtraGrid.Columns.GridColumn colFecha_Caducidad;
     }
 }

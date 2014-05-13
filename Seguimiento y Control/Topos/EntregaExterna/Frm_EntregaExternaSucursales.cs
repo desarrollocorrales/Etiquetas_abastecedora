@@ -56,6 +56,13 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
 
                     if (ValidarEtiquetas() == true)
                     {
+                        List<GridEntrega> lstAux = lstEtiquetasAEntregar.FindAll(o=>DateTime.Today > o.Fecha_Caducidad);
+                        if (lstAux.Count != 0)
+                        {
+                            MessageBox.Show("Se encontraron etiquetas con fecha de caducidad expirada...", "Atención",
+                                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
                         gridMateriaPrima.DataSource = lstEtiquetasAEntregar;
                         gvMateriaPrima.BestFitColumns();
 
@@ -200,6 +207,7 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                                 RenglonGridEntregas.ID_Bodega = oEtiquetaLocal.id_bodega;
                                 RenglonGridEntregas.Estado = oEtiquetaLocal.estatus;
                                 RenglonGridEntregas.Fecha_Empaque = oEtiquetaLocal.fecha_empaque;
+                                RenglonGridEntregas.Fecha_Caducidad = oEtiquetaLocal.fecha_caducidad;
                                 RenglonGridEntregas.Tipo = 'L';
                                 lstEtiquetasAEntregar.Add(RenglonGridEntregas);
                             }
@@ -264,6 +272,7 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                                 RenglonGridEntregas.ID_Bodega = oEtiquetaTraspasada.id_bodega;
                                 RenglonGridEntregas.Estado = oEtiquetaTraspasada.estado;
                                 RenglonGridEntregas.Fecha_Empaque = oEtiquetaTraspasada.fecha_empaque;
+                                RenglonGridEntregas.Fecha_Caducidad = oEtiquetaTraspasada.fecha_caducidad;
                                 RenglonGridEntregas.Tipo = 'T';
                                 lstEtiquetasAEntregar.Add(RenglonGridEntregas);
                             }

@@ -17,6 +17,7 @@ namespace Seguimiento_y_Control.Clases.Topos
         public char Tipo { set; get; }
         public long ID_Bodega { set; get; }
         public DateTime Fecha_Empaque { set; get; }
+        public DateTime Fecha_Caducidad { set; get; }
 
         public string DescripcionEstado
         {
