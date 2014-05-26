@@ -195,6 +195,7 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                                 RenglonGridEntregas.Estado = oEtiquetaLocal.estatus;
                                 RenglonGridEntregas.Fecha_Empaque = oEtiquetaLocal.fecha_empaque;
                                 RenglonGridEntregas.Tipo = 'L';
+                                RenglonGridEntregas.Fecha_Caducidad = oEtiquetaLocal.fecha_caducidad;
                                 lstEtiquetasAEntregar.Add(RenglonGridEntregas);
                             }
                             else
@@ -262,6 +263,7 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                                 RenglonGridEntregas.Estado = oEtiquetaTrasp.estado;
                                 RenglonGridEntregas.Fecha_Empaque = oEtiquetaTrasp.fecha_empaque;
                                 RenglonGridEntregas.Tipo = 'T';
+                                RenglonGridEntregas.Fecha_Caducidad = oEtiquetaTrasp.fecha_caducidad;
                                 lstEtiquetasAEntregar.Add(RenglonGridEntregas);
                             }
                             else

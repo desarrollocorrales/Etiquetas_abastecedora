@@ -13,6 +13,8 @@ namespace Seguimiento_y_Control
 {
     public partial class Login : Form
     {
+        Seguimiento_ACC_Entities segContext;
+
         public Login()
         {
             InitializeComponent();
@@ -31,12 +33,12 @@ namespace Seguimiento_y_Control
         private void Login_Load(object sender, EventArgs e)
         {
             pbLogoSistema.ImageLocation = "LogoSistema.jpg";
+            segContext = new Seguimiento_ACC_Entities();
+            usuarios login = segContext.usuarios.FirstOrDefault();
         }
 
         private bool InicarSesion()
         {
-            Seguimiento_ACC_Entities segContext = new Seguimiento_ACC_Entities();
-
             string user = txbUser.Text.ToUpper();
             string pass = txbPass.Text.ToUpper();
 
