@@ -45,7 +45,7 @@ namespace Seguimiento_y_Control.Produccion
                 string Comando = string.Empty;
                 Contexto = new Seguimiento_ACC_Entities();
                 contenedores Contenedor = Contexto.contenedores.FirstOrDefault(o => o.clave_articulo == oArticulo.clave);
-                catalog_comandos_etiquetas ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "produccion");
+                catalog_comandos_etiquetas ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "cortes");
                 catalog_comandos_etiquetas ComandoContenedor = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "tarima");
 
                 Contexto.Connection.Open();
@@ -205,7 +205,7 @@ namespace Seguimiento_y_Control.Produccion
             sbComandos = new StringBuilder();
             Contexto = new Seguimiento_ACC_Entities();
             contenedores Contenedor = Contexto.contenedores.FirstOrDefault(o => o.clave_articulo == oArticulo.clave);
-            catalog_comandos_etiquetas ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "produccion");
+            catalog_comandos_etiquetas ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "cortes");
             catalog_comandos_etiquetas ComandoTarima = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "Tarima");
 
             if (Contenedor == null)
@@ -286,7 +286,7 @@ namespace Seguimiento_y_Control.Produccion
             //Imprimir etiquetas sin contenedor
             string Comando;
             catalog_comandos_etiquetas ComandoEtiqueta;
-            ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "produccion");
+            ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "cortes");
 
             Contexto.Connection.Open();
             IDbTransaction Transaccion = Contexto.Connection.BeginTransaction();
