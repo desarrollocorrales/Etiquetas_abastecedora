@@ -173,7 +173,8 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                 //***** Por cada etiqueta del archivo escaneado
                 string ID_SUCURSAL = sEtiqueta.Substring(1, 2);
                 string TIPO_ETIQUETA = sEtiqueta.Substring(0, 1);
-                if (ID_SUCURSAL == Config.ID_SUCURSAL_CODIGO_DE_BARRAS)
+                //if (ID_SUCURSAL == Config.ID_SUCURSAL_CODIGO_DE_BARRAS)
+                if (1 == 1)
                 {
                     //Es Interna
                     switch (TIPO_ETIQUETA)
@@ -211,8 +212,8 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                         case "3":
                         case "4":
                             //Son etiquetas de Tarima
-                            paquetes oPaqueteLocal = 
-                                Contexto.paquetes.FirstOrDefault(o=>o.numero_etiqueta==sEtiqueta);
+                            paquetes oPaqueteLocal =
+                                Contexto.paquetes.FirstOrDefault(o => o.numero_etiqueta == sEtiqueta);
                             if (oPaqueteLocal != null)
                             {
                                 Entity.articulos oArticulo = ObtenerArticulo(oPaqueteLocal.clave_articulo);

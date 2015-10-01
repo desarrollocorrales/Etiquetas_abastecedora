@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Seguimiento_y_Control.Entity;
-using Seguimiento_y_Control.Clases.Produccion;
-using System.IO;
-using Seguimiento_y_Control.Clases.Topos;
 using Seguimiento_y_Control.Clases.Configuracion;
-using Seguimiento_y_Control.Reportes;
+using Seguimiento_y_Control.Clases.Produccion;
+using Seguimiento_y_Control.Clases.Topos;
 using Seguimiento_y_Control.Clases.Utilitarias;
+using Seguimiento_y_Control.Entity;
+using Seguimiento_y_Control.Reportes;
 
 namespace Seguimiento_y_Control.Topos.EntregaMateraPrima
 {
@@ -181,7 +180,7 @@ namespace Seguimiento_y_Control.Topos.EntregaMateraPrima
                 if (TIPO_ETIQUETA == "1" || TIPO_ETIQUETA == "2")
                 {
                     //No son Tarimas
-                    if (ID_SUCURSAL == Config.ID_SUCURSAL_CODIGO_DE_BARRAS)
+                    if (1 == 1)
                     {
                         //Son Locales
                         etiquetas oEtiquetaLocal =

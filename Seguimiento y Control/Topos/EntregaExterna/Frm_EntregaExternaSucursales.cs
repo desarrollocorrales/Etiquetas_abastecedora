@@ -185,7 +185,7 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                 TIPO_ETIQUETA = sEtiqueta.Substring(0, 1);
                 ID_SUCURSAL = sEtiqueta.Substring(1, 2);
 
-                if (ID_SUCURSAL == Config.ID_SUCURSAL_CODIGO_DE_BARRAS)
+                if (1 == 1)
                 {
                     //Son Etiquetas Locales
                     switch (TIPO_ETIQUETA)
