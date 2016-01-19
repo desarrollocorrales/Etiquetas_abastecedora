@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.IO;
+using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
-using Seguimiento_y_Control.Entity;
+using ConexionWLS;
 using Seguimiento_y_Control.Clases.Configuracion;
-using Sofbr.Utils.Impresoras;
-using System.IO.Ports;
-using System.IO;
 using Seguimiento_y_Control.Clases.Utilitarias;
+using Seguimiento_y_Control.Entity;
+using Sofbr.Utils.Impresoras;
 
 namespace Seguimiento_y_Control.Produccion
 {
@@ -25,6 +25,7 @@ namespace Seguimiento_y_Control.Produccion
         private List<etiquetas> ListEtiquetas;
         private StringBuilder sbComandos;
         private string sUnidadPaquete;
+        private string IP_Torrey;
 
         public Frm_ImpPesoVariado(articulos pArticulo, string pLote, bodegas pBodega)
         {
@@ -124,7 +125,9 @@ namespace Seguimiento_y_Control.Produccion
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ImprimirPesoVariado();            
+
+            ImprimirPesoVariadoTorrey();            
+            ImprimirPesoVariado();
         }
         private bool ValidarFechaEmpaque()
         {
@@ -144,6 +147,7 @@ namespace Seguimiento_y_Control.Produccion
                 string Domicilio1 = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "domicilio1").valor;
                 string Domicilio2 = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "domicilio2").valor;
                 string LogoEtiqueta = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "logo_etiqueta").valor;
+                IP_Torrey = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "ip_torrey").valor;
 
                 lblNombreEmpresa.Text = NombreEmpresa + Environment.NewLine + RazonSocial;
                 lblDomicilio.Text = Domicilio1 + Environment.NewLine + Domicilio2;
@@ -548,5 +552,35 @@ namespace Seguimiento_y_Control.Produccion
             return fechaServer;
         }
         #endregion  
+
+        #region *** Torrey ***
+
+        private void ImprimirPesoVariadoTorrey()
+        {
+            Conexion Cte = new Conexion();
+            Socket Cliente_bascula = Cte.conectar(IP_Torrey, 50036);
+
+            txbCantidad.Clear();
+
+            if (Cliente_bascula != null && Cliente_bascula.Connected == true)
+            {
+                string sComando = "p0" + (char)9 + (char)10;
+                string[] Dato_Recivido = null;
+                Cte.Envio_Dato(ref Cliente_bascula, IP_Torrey, sComando, ref Dato_Recivido);
+
+                if (Dato_Recivido != null)
+                {
+                    txbCantidad.Text += Dato_Recivido[3];
+                }
+
+                Cte.desconectar(ref Cliente_bascula);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo conectar a la bascula");
+            }
+        }
+
+        #endregion
     }
 }

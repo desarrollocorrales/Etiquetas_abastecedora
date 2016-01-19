@@ -82,6 +82,12 @@
     <Reference Include="DevExpress.XtraRichEdit.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="FabatsaBridgeWLS">
+      <HintPath>.\FabatsaBridgeWLS.dll</HintPath>
+    </Reference>
+    <Reference Include="FabatsaTransferImg">
+      <HintPath>.\FabatsaTransferImg.dll</HintPath>
+    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Dropbox\Desarrollos\Codigo Fuente\ArchivosSAT\ArchivosSAT\FirebirdSql.Data.FirebirdClient.dll</HintPath>
