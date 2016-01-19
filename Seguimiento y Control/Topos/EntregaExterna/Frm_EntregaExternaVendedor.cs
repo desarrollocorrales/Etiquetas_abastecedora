@@ -576,7 +576,7 @@ namespace Seguimiento_y_Control.Topos.EntregaExterna
                     string ID_SUCURSAL = RowEtiqueta.NumeroEtiqueta.Substring(1, 2);
                     string TIPO_ETIQUETA = RowEtiqueta.NumeroEtiqueta.Substring(0, 1);
 
-                    if (ID_SUCURSAL == Config.ID_SUCURSAL_CODIGO_DE_BARRAS)
+                    if (1==1)
                     {
                         //Es Etiqueta local
                         switch (TIPO_ETIQUETA)
