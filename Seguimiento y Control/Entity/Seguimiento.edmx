@@ -10,6 +10,7 @@
           <EntitySet Name="articulos" EntityType="Seguimiento_Model.Store.articulos" store:Type="Tables" Schema="seguimiento_acc" />
           <EntitySet Name="bitacora" EntityType="Seguimiento_Model.Store.bitacora" store:Type="Tables" Schema="seguimiento_acc" />
           <EntitySet Name="bodegas" EntityType="Seguimiento_Model.Store.bodegas" store:Type="Tables" Schema="seguimiento_acc" />
+          <EntitySet Name="catalog_basculas" EntityType="Seguimiento_Model.Store.catalog_basculas" store:Type="Tables" Schema="seguimiento_acc" />
           <EntitySet Name="catalog_comandos_etiquetas" EntityType="Seguimiento_Model.Store.catalog_comandos_etiquetas" store:Type="Tables" Schema="seguimiento_acc" />
           <EntitySet Name="catalog_estatus_etiquetas" EntityType="Seguimiento_Model.Store.catalog_estatus_etiquetas" store:Type="Tables" Schema="seguimiento_acc" />
           <EntitySet Name="catalog_estatus_pedido" EntityType="Seguimiento_Model.Store.catalog_estatus_pedido" store:Type="Tables" Schema="seguimiento_acc" />
@@ -113,6 +114,14 @@
           </Key>
           <Property Name="id_bodega" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="bodega" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="catalog_basculas">
+          <Key>
+            <PropertyRef Name="id_bascula" />
+            <PropertyRef Name="marca" />
+          </Key>
+          <Property Name="id_bascula" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="marca" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="catalog_comandos_etiquetas">
           <Key>
@@ -648,6 +657,7 @@
           <EntitySet Name="pedidos_maestros_sucursales" EntityType="Seguimiento_Model.pedidos_maestros_sucursales" />
           <EntitySet Name="pedidos_maestros_sucursales_det" EntityType="Seguimiento_Model.pedidos_maestros_sucursales_det" />
           <EntitySet Name="salidas_sucursales" EntityType="Seguimiento_Model.salidas_sucursales" />
+          <EntitySet Name="catalog_basculas" EntityType="Seguimiento_Model.catalog_basculas" />
         </EntityContainer>
         <EntityType Name="areas">
           <Key>
@@ -1165,6 +1175,14 @@
           <Property Type="String" Name="destino" />
           <Property Type="String" Name="folio_factura" />
         </EntityType>
+        <EntityType Name="catalog_basculas">
+          <Key>
+            <PropertyRef Name="marca" />
+            <PropertyRef Name="id_bascula" />
+          </Key>
+          <Property Type="String" Name="marca" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="id_bascula" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1528,6 +1546,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="catalog_basculas">
+            <EntityTypeMapping TypeName="Seguimiento_Model.catalog_basculas">
+              <MappingFragment StoreEntitySet="catalog_basculas">
+                <ScalarProperty Name="id_bascula" ColumnName="id_bascula" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1649,6 +1675,7 @@
         <EntityTypeShape EntityType="Seguimiento_Model.pedidos_maestros_sucursales" Width="1.5" PointX="17.375" PointY="0.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="Seguimiento_Model.pedidos_maestros_sucursales_det" Width="1.5" PointX="17.375" PointY="3.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="Seguimiento_Model.salidas_sucursales" Width="1.5" PointX="17.375" PointY="6.75" Height="2.7494921875000102" />
+        <EntityTypeShape EntityType="Seguimiento_Model.catalog_basculas" Width="1.5" PointX="7.375" PointY="17.75" Height="1.2110807291666674" />
       </Diagram>
     </Diagrams>
   </Designer>

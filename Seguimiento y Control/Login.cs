@@ -24,6 +24,9 @@ namespace Seguimiento_y_Control
         {
             if (InicarSesion())
             {
+                Properties.Settings.Default.Bascula = ((catalog_basculas)cmbBascula.SelectedItem).id_bascula;
+                Properties.Settings.Default.Save();
+
                 this.Hide();
                 new MDI_Principal().ShowDialog();
                 this.Close();
@@ -34,7 +37,19 @@ namespace Seguimiento_y_Control
         {
             pbLogoSistema.ImageLocation = "LogoSistema.jpg";
             segContext = new Seguimiento_ACC_Entities();
-            usuarios login = segContext.usuarios.FirstOrDefault();
+            usuarios login = segContext.usuarios.FirstOrDefault();            
+        }
+        private void cargarBasculas()
+        {
+            List<catalog_basculas> lstBasculas = segContext.catalog_basculas.ToList();
+            cmbBascula.DataSource = lstBasculas;
+            cmbBascula.ValueMember = "id_bascula";
+            cmbBascula.DisplayMember = "marca";
+
+            if (Properties.Settings.Default.Bascula != string.Empty)
+            {
+                cmbBascula.SelectedValue = Properties.Settings.Default.Bascula;
+            }
         }
 
         private bool InicarSesion()
@@ -94,6 +109,11 @@ namespace Seguimiento_y_Control
                     this.Close();
                 }
             }
+        }
+
+        private void Login_Shown(object sender, EventArgs e)
+        {
+            cargarBasculas();
         }
     }
 }

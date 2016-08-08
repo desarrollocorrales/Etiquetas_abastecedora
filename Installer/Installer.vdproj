@@ -465,6 +465,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EDC2F9B7AD82C7A08DDB3F05A26537AA"
+        "OwnerKey" = "8:_F67E26A033E9F6841256AFBC62FED2FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EDC2F9B7AD82C7A08DDB3F05A26537AA"
+        "OwnerKey" = "8:_49B5201A20CF46728C6667BC96E85C00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EFB106EE2A70420E905A7DB4269D0CFD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -531,6 +543,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F67E26A033E9F6841256AFBC62FED2FD"
+        "OwnerKey" = "8:_49B5201A20CF46728C6667BC96E85C00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F7E33BFAA72041BF966139A35C97404C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -545,6 +563,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_49B5201A20CF46728C6667BC96E85C00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F67E26A033E9F6841256AFBC62FED2FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EDC2F9B7AD82C7A08DDB3F05A26537AA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1427,6 +1457,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EDC2F9B7AD82C7A08DDB3F05A26537AA"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FabatsaTransferImg, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_EDC2F9B7AD82C7A08DDB3F05A26537AA"
+                    {
+                    "Name" = "8:FabatsaTransferImg.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FabatsaTransferImg.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_68ACD52CDDE744CA816C407C3B26B39B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EFB106EE2A70420E905A7DB4269D0CFD"
             {
             "SourcePath" = "8:..\\Seguimiento y Control\\EAN-13.ttf"
@@ -1461,6 +1522,37 @@
                     }
                 }
             "SourcePath" = "8:DevExpress.XtraEditors.v11.1.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_68ACD52CDDE744CA816C407C3B26B39B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F67E26A033E9F6841256AFBC62FED2FD"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FabatsaBridgeWLS, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_F67E26A033E9F6841256AFBC62FED2FD"
+                    {
+                    "Name" = "8:FabatsaBridgeWLS.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FabatsaBridgeWLS.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_68ACD52CDDE744CA816C407C3B26B39B"
@@ -1586,7 +1678,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Seguimiento y Control"
         "ProductCode" = "8:{04FC395E-D110-40BD-915C-9F07D0FF2E86}"
-        "PackageCode" = "8:{1E7502A8-436C-4B99-96D8-EA1276C702D3}"
+        "PackageCode" = "8:{30AE0DF0-B1CB-444F-AD61-DB9DCBF5B6DB}"
         "UpgradeCode" = "8:{E7DA47A5-EA1A-4268-A9B4-CA5440445052}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
@@ -699,8 +700,25 @@ namespace Seguimiento_y_Control.Entity
             }
         }
         private ObjectSet<salidas_sucursales> _salidas_sucursales;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<catalog_basculas> catalog_basculas
+        {
+            get
+            {
+                if ((_catalog_basculas == null))
+                {
+                    _catalog_basculas = base.CreateObjectSet<catalog_basculas>("catalog_basculas");
+                }
+                return _catalog_basculas;
+            }
+        }
+        private ObjectSet<catalog_basculas> _catalog_basculas;
 
         #endregion
+
         #region Métodos AddTo
     
         /// <summary>
@@ -1014,13 +1032,21 @@ namespace Seguimiento_y_Control.Entity
         {
             base.AddObject("salidas_sucursales", salidas_sucursales);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet catalog_basculas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTocatalog_basculas(catalog_basculas catalog_basculas)
+        {
+            base.AddObject("catalog_basculas", catalog_basculas);
+        }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entidades
     
     /// <summary>
@@ -1047,6 +1073,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1101,6 +1128,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnnombreChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1127,6 +1155,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1165,6 +1194,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1411,6 +1441,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnpiezasChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1459,6 +1490,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1493,6 +1525,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1643,6 +1676,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_usuario_creadorChanged();
 
         #endregion
+
     
     }
     
@@ -1670,6 +1704,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1724,6 +1759,93 @@ namespace Seguimiento_y_Control.Entity
         partial void OnbodegaChanged();
 
         #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Seguimiento_Model", Name="catalog_basculas")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class catalog_basculas : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto catalog_basculas.
+        /// </summary>
+        /// <param name="marca">Valor inicial de la propiedad marca.</param>
+        /// <param name="id_bascula">Valor inicial de la propiedad id_bascula.</param>
+        public static catalog_basculas Createcatalog_basculas(global::System.String marca, global::System.String id_bascula)
+        {
+            catalog_basculas catalog_basculas = new catalog_basculas();
+            catalog_basculas.marca = marca;
+            catalog_basculas.id_bascula = id_bascula;
+            return catalog_basculas;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String marca
+        {
+            get
+            {
+                return _marca;
+            }
+            set
+            {
+                if (_marca != value)
+                {
+                    OnmarcaChanging(value);
+                    ReportPropertyChanging("marca");
+                    _marca = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("marca");
+                    OnmarcaChanged();
+                }
+            }
+        }
+        private global::System.String _marca;
+        partial void OnmarcaChanging(global::System.String value);
+        partial void OnmarcaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id_bascula
+        {
+            get
+            {
+                return _id_bascula;
+            }
+            set
+            {
+                if (_id_bascula != value)
+                {
+                    Onid_basculaChanging(value);
+                    ReportPropertyChanging("id_bascula");
+                    _id_bascula = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("id_bascula");
+                    Onid_basculaChanged();
+                }
+            }
+        }
+        private global::System.String _id_bascula;
+        partial void Onid_basculaChanging(global::System.String value);
+        partial void Onid_basculaChanged();
+
+        #endregion
+
     
     }
     
@@ -1755,6 +1877,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1857,6 +1980,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onimagen_etiquetaChanged();
 
         #endregion
+
     
     }
     
@@ -1884,6 +2008,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1938,6 +2063,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OndescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1986,6 +2112,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2012,6 +2139,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2066,6 +2194,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OndescripcionChanged();
 
         #endregion
+
     
     }
     
@@ -2093,6 +2222,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2147,6 +2277,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OndescripcionChanged();
 
         #endregion
+
     
     }
     
@@ -2174,6 +2305,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2228,6 +2360,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OndescripcionChanged();
 
         #endregion
+
     
     }
     
@@ -2255,6 +2388,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2309,6 +2443,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OndescripcionChanged();
 
         #endregion
+
     
     }
     
@@ -2334,6 +2469,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2364,6 +2500,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnunidadChanged();
 
         #endregion
+
     
     }
     
@@ -2393,6 +2530,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2495,6 +2633,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OndescripcionChanged();
 
         #endregion
+
     
     }
     
@@ -2528,6 +2667,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2654,6 +2794,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onimpresion_paqueteChanged();
 
         #endregion
+
     
     }
     
@@ -2697,6 +2838,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3135,6 +3277,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onfecha_entregaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3237,6 +3380,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3283,6 +3427,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3697,6 +3842,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onfecha_entregaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3777,6 +3923,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3805,6 +3952,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3883,6 +4031,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onfecha_creacionChanged();
 
         #endregion
+
     
     }
     
@@ -3920,6 +4069,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4142,6 +4292,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onclave_articuloChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4168,6 +4319,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4196,6 +4348,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4274,6 +4427,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_etiquetaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4354,6 +4508,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4394,6 +4549,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4664,6 +4820,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onclave_articuloChanged();
 
         #endregion
+
     
     }
     
@@ -4697,6 +4854,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4871,6 +5029,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Ondias_de_expiracionChanged();
 
         #endregion
+
     
     }
     
@@ -4906,6 +5065,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5056,6 +5216,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnunidadChanged();
 
         #endregion
+
     
     }
     
@@ -5087,6 +5248,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5189,6 +5351,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_usuario_creadorChanged();
 
         #endregion
+
     
     }
     
@@ -5220,6 +5383,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5322,6 +5486,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_bodegaChanged();
 
         #endregion
+
     
     }
     
@@ -5353,6 +5518,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5455,6 +5621,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_usuario_creadorChanged();
 
         #endregion
+
     
     }
     
@@ -5486,6 +5653,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5588,6 +5756,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_pedido_maestro_vendedorChanged();
 
         #endregion
+
     
     }
     
@@ -5625,6 +5794,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5847,6 +6017,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnobservacionesChanged();
 
         #endregion
+
     
     }
     
@@ -5882,6 +6053,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6056,6 +6228,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_pedido_maestro_sucursales_detChanged();
 
         #endregion
+
     
     }
     
@@ -6095,6 +6268,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6341,6 +6515,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnobservacionesChanged();
 
         #endregion
+
     
     }
     
@@ -6378,6 +6553,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6552,6 +6728,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onid_pedido_maestro_vendedores_detChanged();
 
         #endregion
+
     
     }
     
@@ -6579,6 +6756,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6657,6 +6835,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Oncadena_permisosChanged();
 
         #endregion
+
     
     }
     
@@ -6686,6 +6865,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6764,6 +6944,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OncantidadChanged();
 
         #endregion
+
     
     }
     
@@ -6793,6 +6974,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6871,6 +7053,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnestatusChanged();
 
         #endregion
+
     
     }
     
@@ -6906,6 +7089,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7128,6 +7312,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onfolio_facturaChanged();
 
         #endregion
+
     
     }
     
@@ -7157,6 +7342,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7283,6 +7469,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnunidadChanged();
 
         #endregion
+
     
     }
     
@@ -7318,6 +7505,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7540,6 +7728,7 @@ namespace Seguimiento_y_Control.Entity
         partial void Onfolio_facturaChanged();
 
         #endregion
+
     
     }
     
@@ -7569,6 +7758,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7695,6 +7885,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnunidadChanged();
 
         #endregion
+
     
     }
     
@@ -7730,6 +7921,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7928,6 +8120,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OndestinoChanged();
 
         #endregion
+
     
     }
     
@@ -7957,6 +8150,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -8083,6 +8277,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnunidadChanged();
 
         #endregion
+
     
     }
     
@@ -8118,6 +8313,7 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -8268,6 +8464,7 @@ namespace Seguimiento_y_Control.Entity
         partial void OnestadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -8310,8 +8507,10 @@ namespace Seguimiento_y_Control.Entity
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

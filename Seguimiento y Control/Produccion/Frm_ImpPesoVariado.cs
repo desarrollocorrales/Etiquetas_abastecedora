@@ -12,11 +12,13 @@ using Seguimiento_y_Control.Clases.Configuracion;
 using Seguimiento_y_Control.Clases.Utilitarias;
 using Seguimiento_y_Control.Entity;
 using Sofbr.Utils.Impresoras;
+using System.Configuration;
 
 namespace Seguimiento_y_Control.Produccion
 {
     public partial class Frm_ImpPesoVariado : Form
     {
+        private string RxString;
         private string sLote;
         private bodegas oBodega;
         private articulos oArticulo;
@@ -25,7 +27,6 @@ namespace Seguimiento_y_Control.Produccion
         private List<etiquetas> ListEtiquetas;
         private StringBuilder sbComandos;
         private string sUnidadPaquete;
-        private string IP_Torrey;
 
         public Frm_ImpPesoVariado(articulos pArticulo, string pLote, bodegas pBodega)
         {
@@ -126,7 +127,7 @@ namespace Seguimiento_y_Control.Produccion
                 return;
             }
 
-            ImprimirPesoVariadoTorrey();            
+            //ImprimirPesoVariadoTorrey();            
             ImprimirPesoVariado();
         }
         private bool ValidarFechaEmpaque()
@@ -147,7 +148,7 @@ namespace Seguimiento_y_Control.Produccion
                 string Domicilio1 = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "domicilio1").valor;
                 string Domicilio2 = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "domicilio2").valor;
                 string LogoEtiqueta = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "logo_etiqueta").valor;
-                IP_Torrey = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "ip_torrey").valor;
+                //IP_Torrey = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "ip_torrey").valor;
 
                 lblNombreEmpresa.Text = NombreEmpresa + Environment.NewLine + RazonSocial;
                 lblDomicilio.Text = Domicilio1 + Environment.NewLine + Domicilio2;
@@ -320,7 +321,19 @@ namespace Seguimiento_y_Control.Produccion
         {
             try
             {
-                Bascula();
+                switch(Properties.Settings.Default.Bascula.ToUpper())
+                {
+                    case "AB": 
+                        Bascula();
+                        break;
+                    case "T":
+                        Torrey();
+                        break;
+                    case "CC":
+                        CobaCorp();
+                        break;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -331,32 +344,38 @@ namespace Seguimiento_y_Control.Produccion
         private void Bascula()
         {
             //***** Leer Peso Total GROSS
-            string sGross = objBascula.ReadLine();
+            string sGross = objBascula.ReadExisting();
+            sGross = sGross.Replace("\n", "");
+            sGross = sGross.Replace("\r", "");
             if (sGross.Trim() == string.Empty || sGross.Contains("GROSS") != true)
                 return;
-            
+
             string subGrossLbl = sGross.Substring(0, 5).Trim();
             string subGrossPeso = sGross.Substring(5, 14).Trim();
             string subGrossUnidad = sGross.Substring(19, 2).Trim();
 
             //***** Leer Peso del contenedor TARA
-            string sTare = objBascula.ReadLine();
             string subNetPeso = "0";
-            if (sTare.Length == 11)
+            if (sGross.Length == 63)
             {
+                string sTare = sGross.Substring(21, 21).Trim();
                 subNetPeso = "0";
-            }
-            else
-            {
-                string subTareLbl = sTare.Substring(0, 5).Trim();
-                string subTarePeso = sTare.Substring(5, 14).Trim();
-                string subTareUnidad = sTare.Substring(19, 2).Trim();
+                if (sTare.Length == 11)
+                {
+                    subNetPeso = "0";
+                }
+                else
+                {
+                    string subTareLbl = sTare.Substring(0, 5).Trim();
+                    string subTarePeso = sTare.Substring(5, 14).Trim();
+                    string subTareUnidad = sTare.Substring(19, 2).Trim();
 
-                //***** Leer Peso del producto NETO
-                string sNet = objBascula.ReadLine();
-                string subNetLbl = sNet.Substring(0, 5).Trim();
-                subNetPeso = sNet.Substring(5, 14).Trim();
-                string subNetUnidad = sNet.Substring(19, 2).Trim();
+                    //***** Leer Peso del producto NETO
+                    string sNet = sGross.Substring(42, 21).Trim();
+                    string subNetLbl = sNet.Substring(0, 5).Trim();
+                    subNetPeso = sNet.Substring(5, 14).Trim();
+                    string subNetUnidad = sNet.Substring(19, 2).Trim();
+                }
             }
 
             if (subGrossLbl.ToUpper() == "GROSS")
@@ -387,6 +406,7 @@ namespace Seguimiento_y_Control.Produccion
                 throw new IOException("Error al leer la bascula");
             }
         }
+               
         private void Enviar(string sCadena)
         {
             // InvokeRequired required compares the thread ID of the
@@ -555,32 +575,135 @@ namespace Seguimiento_y_Control.Produccion
 
         #region *** Torrey ***
 
-        private void ImprimirPesoVariadoTorrey()
+        private void Torrey()
         {
-            Conexion Cte = new Conexion();
-            Socket Cliente_bascula = Cte.conectar(IP_Torrey, 50036);
-
-            txbCantidad.Clear();
-
-            if (Cliente_bascula != null && Cliente_bascula.Connected == true)
+            RxString = objBascula.ReadExisting();
+            this.Invoke(new EventHandler(DisplayText));
+        }
+        private void DisplayText(object sender, EventArgs e)
+        {
+            try
             {
-                string sComando = "p0" + (char)9 + (char)10;
-                string[] Dato_Recivido = null;
-                Cte.Envio_Dato(ref Cliente_bascula, IP_Torrey, sComando, ref Dato_Recivido);
-
-                if (Dato_Recivido != null)
+                if (RxString.Trim() != string.Empty)
                 {
-                    txbCantidad.Text += Dato_Recivido[3];
+                    if (RxString.ToUpper().Contains("LBS") == true)
+                    {
+                        txbCantidad.Text = "Error";
+                        MessageBox.Show("Verifique las unidades de Medida");
+                    }
+                    else
+                    {
+                        RxString = RxString.Trim();
+                        var cantidad = RxString.Split(' ');
+
+                        if (cantidad.Length == 2)
+                        {
+                            var dCantidad = Convert.ToDecimal(cantidad[0]);
+                            if (dCantidad > 0)
+                            {
+                                txbCantidad.Text = cantidad[0];
+                                ImprimirPesoVariado();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error en el peso...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }                                              
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StringBuilder sbMensaje = new StringBuilder();
+                while (ex != null)
+                {
+                    sbMensaje.AppendLine(ex.Message);
+                    ex = ex.InnerException;
                 }
 
-                Cte.desconectar(ref Cliente_bascula);
-            }
-            else
-            {
-                MessageBox.Show("No se pudo conectar a la bascula");
+                sbComandos.AppendLine(RxString + ": " + RxString.Length);
+                MessageBox.Show(sbMensaje.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         #endregion
+
+        #region * * * Coba Corp * * *
+        private void CobaCorp()
+        {
+            RxString = objBascula.ReadExisting();
+            this.Invoke(new EventHandler(CobaCorp_DisplayText));
+        }
+        private void CobaCorp_DisplayText(object sender, EventArgs e)
+        {
+            try
+            {
+                if (RxString.Trim() != string.Empty)
+                {
+                    if (RxString.ToUpper().Contains("LBS") == true)
+                    {
+                        txbCantidad.Text = "Error";
+                        MessageBox.Show("Verifique las unidades de Medida");
+                    }
+                    else
+                    {
+                        RxString = RxString.Trim();
+                        var peso = string.Empty;
+
+                        foreach (char caracter in RxString)
+                        {
+                            if (Char.IsDigit(caracter) == true)
+                            {
+                                peso += caracter;
+                            }
+                            else if (Char.IsPunctuation(caracter)==true)
+                            {
+                                peso += caracter; 
+                            }
+                        }
+
+                        var dCantidad = Convert.ToDecimal(peso);
+
+                        if (dCantidad > 0)
+                        {
+                            txbCantidad.Text = peso;
+                            ImprimirPesoVariado();
+                        }
+                        else
+                        {
+                            //MessageBox.Show("Error en el peso. Debe ser mayor a cero...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StringBuilder sbMensaje = new StringBuilder();
+                while (ex != null)
+                {
+                    sbMensaje.AppendLine(ex.Message);
+                    ex = ex.InnerException;
+                }
+
+                sbComandos.AppendLine(RxString + ": " + RxString.Length);
+                MessageBox.Show(sbMensaje.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+        private void txbCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (ValidarFechaEmpaque() == false)
+                {
+                    MessageBox.Show("Error en la fecha de empaque...", "",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //ImprimirPesoVariadoTorrey();
+                ImprimirPesoVariado();
+            }
+        }
     }
 }

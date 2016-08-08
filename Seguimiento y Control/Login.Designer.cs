@@ -35,6 +35,8 @@
             this.txbUser = new System.Windows.Forms.TextBox();
             this.txbPass = new System.Windows.Forms.TextBox();
             this.pbLogoSistema = new System.Windows.Forms.PictureBox();
+            this.cmbBascula = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoSistema)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,11 +101,32 @@
             this.pbLogoSistema.TabIndex = 0;
             this.pbLogoSistema.TabStop = false;
             // 
+            // cmbBascula
+            // 
+            this.cmbBascula.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbBascula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBascula.FormattingEnabled = true;
+            this.cmbBascula.Location = new System.Drawing.Point(0, 286);
+            this.cmbBascula.Name = "cmbBascula";
+            this.cmbBascula.Size = new System.Drawing.Size(464, 26);
+            this.cmbBascula.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 265);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 18);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Báscula:";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 282);
+            this.ClientSize = new System.Drawing.Size(464, 312);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbBascula);
             this.Controls.Add(this.txbPass);
             this.Controls.Add(this.txbUser);
             this.Controls.Add(this.label2);
@@ -113,11 +136,12 @@
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(480, 320);
-            this.MinimumSize = new System.Drawing.Size(480, 320);
+            this.MaximumSize = new System.Drawing.Size(480, 350);
+            this.MinimumSize = new System.Drawing.Size(480, 350);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Login_Load);
+            this.Shown += new System.EventHandler(this.Login_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoSistema)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -132,5 +156,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbUser;
         private System.Windows.Forms.TextBox txbPass;
+        private System.Windows.Forms.ComboBox cmbBascula;
+        private System.Windows.Forms.Label label3;
     }
 }
