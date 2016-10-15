@@ -75,8 +75,8 @@ namespace Seguimiento_y_Control.Administracion.Devoluciones
                     string TIPO_ETIQUETA = Etiqueta.Substring(0, 1);
                     string ID_SUCURSAL = Etiqueta.Substring(1, 2);
 
-                    if (ID_SUCURSAL == Config.ID_SUCURSAL_CODIGO_DE_BARRAS)
-                    {
+                    //if (ID_SUCURSAL == Config.ID_SUCURSAL_CODIGO_DE_BARRAS)
+                    //{
                         //Son locales
                         switch (TIPO_ETIQUETA)
                         {
@@ -106,43 +106,43 @@ namespace Seguimiento_y_Control.Administracion.Devoluciones
                                 bError = true;
                                 break;
                         }
-                    }
-                    else
-                    {
-                        //Son Traspasadas
-                        switch (TIPO_ETIQUETA)
-                        {
-                            case "1": case "2":
-                                //No son tarimas
-                                etiquetas_traspasadas EtqTrasp = 
-                                    SegContext
-                                        .etiquetas_traspasadas
-                                        .FirstOrDefault(o => o.numero_etiqueta == Etiqueta);
+                    //}
+                    //else
+                    //{
+                    //    //Son Traspasadas
+                    //    switch (TIPO_ETIQUETA)
+                    //    {
+                    //        case "1": case "2":
+                    //            //No son tarimas
+                    //            etiquetas_traspasadas EtqTrasp = 
+                    //                SegContext
+                    //                    .etiquetas_traspasadas
+                    //                    .FirstOrDefault(o => o.numero_etiqueta == Etiqueta);
 
-                                if (EtqTrasp != null)
-                                {
-                                    //Es una etiqueta local
-                                    RenglonGrid = ObtenerRenglon(EtqTrasp);
-                                    RenglonGrid.NumeroEtiqueta = Etiqueta;
-                                    SourceGrid.Add(RenglonGrid);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se encontro la etiqueta numero: " + Etiqueta,
-                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    bError = true;
-                                    break;
-                                }
-                                break;
+                    //            if (EtqTrasp != null)
+                    //            {
+                    //                //Es una etiqueta local
+                    //                RenglonGrid = ObtenerRenglon(EtqTrasp);
+                    //                RenglonGrid.NumeroEtiqueta = Etiqueta;
+                    //                SourceGrid.Add(RenglonGrid);
+                    //            }
+                    //            else
+                    //            {
+                    //                MessageBox.Show("No se encontro la etiqueta numero: " + Etiqueta,
+                    //                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //                bError = true;
+                    //                break;
+                    //            }
+                    //            break;
 
-                            case "3": case "4":
-                                //Son Tarimas
-                                MessageBox.Show("No es posible devolver una tarima completa, deberá devolver cada una de las cajas...",
-                                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                bError = true;
-                                break;
-                        }
-                    }                    
+                    //        case "3": case "4":
+                    //            //Son Tarimas
+                    //            MessageBox.Show("No es posible devolver una tarima completa, deberá devolver cada una de las cajas...",
+                    //                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //            bError = true;
+                    //            break;
+                    //    }
+                    //}                    
                 }
 
                 if (bError == false)

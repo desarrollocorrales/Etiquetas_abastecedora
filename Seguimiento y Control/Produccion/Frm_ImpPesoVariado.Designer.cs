@@ -179,7 +179,7 @@
             this.lblDomicilio.Size = new System.Drawing.Size(371, 36);
             this.lblDomicilio.TabIndex = 29;
             this.lblDomicilio.Text = "Segunda de Selenio y Estaño s/n Cd. Industrial cp 34208 Durango, Dgo. Tel: 01 618" +
-    " 8 14 15 15";
+                " 8 14 15 15";
             this.lblDomicilio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblNombreEmpresa
@@ -332,7 +332,7 @@
             // lblNumeroEtiqueta
             // 
             this.lblNumeroEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNumeroEtiqueta.Font = new System.Drawing.Font("EAN-13", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroEtiqueta.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroEtiqueta.Location = new System.Drawing.Point(32, 212);
             this.lblNumeroEtiqueta.Name = "lblNumeroEtiqueta";
             this.lblNumeroEtiqueta.Size = new System.Drawing.Size(225, 116);
@@ -345,7 +345,7 @@
             this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimir.Image = global::Seguimiento_y_Control.Properties.Resources.Printer30;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(442, 367);
+            this.btnImprimir.Location = new System.Drawing.Point(442, 366);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(102, 33);
             this.btnImprimir.TabIndex = 18;
@@ -359,7 +359,7 @@
             this.btnTerminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTerminar.Image = global::Seguimiento_y_Control.Properties.Resources.close_icon30;
             this.btnTerminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTerminar.Location = new System.Drawing.Point(550, 367);
+            this.btnTerminar.Location = new System.Drawing.Point(550, 366);
             this.btnTerminar.Name = "btnTerminar";
             this.btnTerminar.Size = new System.Drawing.Size(102, 33);
             this.btnTerminar.TabIndex = 19;
@@ -376,7 +376,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 412);
+            this.ClientSize = new System.Drawing.Size(664, 411);
             this.ControlBox = false;
             this.Controls.Add(this.btnTerminar);
             this.Controls.Add(this.btnImprimir);
