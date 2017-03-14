@@ -70,7 +70,7 @@
             // 
             // navMenuPrincipal
             // 
-            this.navMenuPrincipal.ActiveGroup = this.gAdministracion;
+            this.navMenuPrincipal.ActiveGroup = this.gDistribucion;
             this.navMenuPrincipal.Appearance.GroupHeader.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navMenuPrincipal.Appearance.GroupHeader.Options.UseFont = true;
             this.navMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
@@ -124,7 +124,6 @@
             this.gAdministracion.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
             this.gAdministracion.Appearance.Options.UseFont = true;
             this.gAdministracion.Caption = "Administración";
-            this.gAdministracion.Expanded = true;
             this.gAdministracion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.barImpresora),
             new DevExpress.XtraNavBar.NavBarItemLink(this.barAltasArticulos),
@@ -398,6 +397,7 @@
             this.gDistribucion.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
             this.gDistribucion.Appearance.Options.UseFont = true;
             this.gDistribucion.Caption = "Distribución";
+            this.gDistribucion.Expanded = true;
             this.gDistribucion.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.itmPedidoSucursales),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itmPedidosVendedores)});

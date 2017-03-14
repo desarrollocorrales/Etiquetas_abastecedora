@@ -59,5 +59,10 @@ namespace Seguimiento_y_Control.Administracion
                 this.Close();
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

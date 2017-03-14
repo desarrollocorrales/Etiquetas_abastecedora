@@ -345,7 +345,7 @@
             this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimir.Image = global::Seguimiento_y_Control.Properties.Resources.Printer30;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(442, 366);
+            this.btnImprimir.Location = new System.Drawing.Point(442, 343);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(102, 33);
             this.btnImprimir.TabIndex = 18;
@@ -359,7 +359,7 @@
             this.btnTerminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTerminar.Image = global::Seguimiento_y_Control.Properties.Resources.close_icon30;
             this.btnTerminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTerminar.Location = new System.Drawing.Point(550, 366);
+            this.btnTerminar.Location = new System.Drawing.Point(550, 343);
             this.btnTerminar.Name = "btnTerminar";
             this.btnTerminar.Size = new System.Drawing.Size(102, 33);
             this.btnTerminar.TabIndex = 19;

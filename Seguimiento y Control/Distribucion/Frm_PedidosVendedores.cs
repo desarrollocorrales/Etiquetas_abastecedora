@@ -18,9 +18,9 @@ namespace Seguimiento_y_Control.Distribucion
     public partial class Frm_PedidosVendedores : Form
     {
         private DateTime _FechaServer;
-        List<Entity.Internet.usuarios> lstTodosLosUsuarios;
-        List<bodegas> LstTodasLasBodegas;
-        List<Entity.articulos> LstTodosLosArticulos;
+        private List<Entity.Internet.usuarios> lstTodosLosUsuarios;
+        private List<bodegas> LstTodasLasBodegas;
+        private List<Entity.articulos> LstTodosLosArticulos;
 
         public Frm_PedidosVendedores()
         {
@@ -176,6 +176,7 @@ namespace Seguimiento_y_Control.Distribucion
             //***** Crear el contexto y abrir la conexion
             Seguimiento_ACC_Entities SeguimientoContexto = new Seguimiento_ACC_Entities();
             SeguimientoContexto.Connection.Open();
+            
             //Crear una transacción                
             IDbTransaction transaccion = SeguimientoContexto.Connection.BeginTransaction();
 
@@ -198,11 +199,59 @@ namespace Seguimiento_y_Control.Distribucion
                 //**** Por cada pedido seleccionado
                 foreach (GridPedidoVendedor pedido in LstPedidos)
                 {
-
                     List<pedidos_detalle> ListaDetalles = new List<pedidos_detalle>();
 
                     //***** Obtener los detalles del pedido
                     ListaDetalles = LogisContexto.pedidos_detalle.Where(o => o.id_pedido == pedido.ID_Pedido).ToList();
+
+                    /* ------------- ACTUALIZACION v1.1 14-Marzo-2017 -------------------------------------- */
+
+                    var buscaPedido = 
+                        SeguimientoContexto
+                            .pedidos_vendedores
+                            .Where(w => w.id_pedido_portal == pedido.ID_Pedido)
+                            .FirstOrDefault();
+
+                    if (buscaPedido != null)
+                    {
+                        //***** Carga los detalles del pedido
+                        pedidos_vendedores_det _detalleSeguimiento;
+                        foreach (pedidos_detalle detalle in ListaDetalles)
+                        {
+                            _detalleSeguimiento = new pedidos_vendedores_det();
+                            _detalleSeguimiento.id_pedido_vendedor = buscaPedido.id_pedido_vendedor;
+                            _detalleSeguimiento.clave_articulo = detalle.articulos.clave;
+                            _detalleSeguimiento.id_bodega = getIdBodega(detalle.articulos.clave);
+                            _detalleSeguimiento.cantidad = Convert.ToDecimal(detalle.cantidad.ToString());
+                            _detalleSeguimiento.unidad = detalle.unidad;
+                            _detalleSeguimiento.id_pedido_maestro_vendedores_det = 0;
+                            LstTodosLosDetalles.Add(_detalleSeguimiento);
+                        }
+
+
+                        ReportePedidoVendedor _PedidoReporte = ImprimirPedido(pedido);
+                        _PedidoReporte.CreateDocument();
+                        TodosLosPedidos.Pages.AddRange(_PedidoReporte.Pages);
+
+                        // llena pedidos_vendedores
+                        //***** Crear el encabezado del pedido
+                        pedidos_vendedores _pedidoVendedor = new pedidos_vendedores();
+                        _pedidoVendedor.id_pedido_portal = pedido.ID_Pedido;
+                        _pedidoVendedor.fecha = pedido.FechaPedido;
+                        _pedidoVendedor.id_usuario_portal = pedido.ID_Usuario;
+                        _pedidoVendedor.id_cliente_portal = pedido.ID_Cliente;
+                        _pedidoVendedor.fecha_a_surtir = pedido.FechaSurtir;
+                        _pedidoVendedor.tipo_pedido = "V";
+                        _pedidoVendedor.estatus = "A";
+                        _pedidoVendedor.observaciones = pedido.Observaciones;
+                        _pedidoVendedor.id_pedido_vendedor = buscaPedido.id_pedido_vendedor;
+
+                        LstTodosLosEncabezados.Add(_pedidoVendedor);
+
+                        continue;
+                    }
+                    /* ------------- ACTUALIZACION v1.1 14-Marzo-2017 -------------------------------------- */
+
 
                     //***** Crear el encabezado del pedido
                     pedidos_vendedores PedidoVendedor = new pedidos_vendedores();
@@ -238,6 +287,7 @@ namespace Seguimiento_y_Control.Distribucion
                         SeguimientoContexto.SaveChanges();
                     }
                     SeguimientoContexto.SaveChanges();
+
 
                     ReportePedidoVendedor PedidoReporte = ImprimirPedido(pedido);
                     PedidoReporte.CreateDocument();
@@ -413,8 +463,7 @@ namespace Seguimiento_y_Control.Distribucion
             DateTime fechaServer = queryResults.First();
             return fechaServer.Date;
         }
-
-        
+   
         private string getUsuario(int id_usuario)
         {
             string sUsuario = string.Empty;

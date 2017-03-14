@@ -234,6 +234,12 @@
     <Compile Include="Clases\Utilitarias\EAN13.cs" />
     <Compile Include="Clases\Utilitarias\ImagenReportes.cs" />
     <Compile Include="Clases\Utilitarias\Servidor.cs" />
+    <Compile Include="Distribucion\Frm_DistibucionVendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Distribucion\Frm_DistibucionVendedores.Designer.cs">
+      <DependentUpon>Frm_DistibucionVendedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Distribucion\Frm_PedidosSucursales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -499,6 +505,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Usuarios\Frm_Usuarios.resx">
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Distribucion\Frm_DistibucionVendedores.resx">
+      <DependentUpon>Frm_DistibucionVendedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Distribucion\Frm_PedidosSucursales.resx">
       <DependentUpon>Frm_PedidosSucursales.cs</DependentUpon>

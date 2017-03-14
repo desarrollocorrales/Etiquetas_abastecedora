@@ -35,6 +35,12 @@ namespace Seguimiento_y_Control
 
         private void Login_Load(object sender, EventArgs e)
         {
+            /* ------------- ACTUALIZACION v1.1 -------------------------------------- */
+
+            this.ActiveControl = this.txbUser;
+
+            /* ------------- ACTUALIZACION v1.1 -------------------------------------- */
+            
             pbLogoSistema.ImageLocation = "LogoSistema.jpg";
             segContext = new Seguimiento_ACC_Entities();
             usuarios login = segContext.usuarios.FirstOrDefault();            

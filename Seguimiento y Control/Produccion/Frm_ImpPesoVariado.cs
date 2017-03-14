@@ -689,7 +689,9 @@ namespace Seguimiento_y_Control.Produccion
                 MessageBox.Show(sbMensaje.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion
+
         private void txbCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)

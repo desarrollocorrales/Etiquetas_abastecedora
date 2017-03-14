@@ -319,7 +319,18 @@ namespace Seguimiento_y_Control
 
         private void itmPedidosVendedores_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-
+            /*
+            if (frmDistribucionVendedores.IsDisposed)
+            {
+                frmDistribucionVendedores = new Frm_DistibucionVendedores();
+                frmDistribucionVendedores.MdiParent = this;
+                frmDistribucionVendedores.WindowState = FormWindowState.Maximized;
+                frmDistribucionVendedores.Show();
+            }
+            else
+            {
+                frmDistribucionVendedores.WindowState = FormWindowState.Maximized;
+            }*/
             if (frm_PedidosVendedores.IsDisposed)
             {
                 frm_PedidosVendedores = new Frm_PedidosVendedores();

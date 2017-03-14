@@ -1,6 +1,6 @@
 ﻿namespace Seguimiento_y_Control.Distribucion
 {
-    partial class Frm_PedidosVendedores
+    partial class Frm_DistibucionVendedores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_PedidosVendedores));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_DistibucionVendedores));
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbRutas = new System.Windows.Forms.ComboBox();
+            this.pbLoading = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnImprimirPedidos = new System.Windows.Forms.Button();
             this.btnRequerir = new System.Windows.Forms.Button();
             this.gridPedidos = new DevExpress.XtraGrid.GridControl();
-            this.gridPedidoVendedorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvPedidos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colSeleccion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colID_Pedido = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,56 +45,88 @@
             this.colFechaPedido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFechaSurtir = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.pbLoading = new System.Windows.Forms.PictureBox();
-            this.cbRutas = new System.Windows.Forms.ComboBox();
-            this.rutasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedidoVendedorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvPedidos)).BeginInit();
+            this.bgwProceso = new System.ComponentModel.BackgroundWorker();
+            this.lblAccion = new System.Windows.Forms.Label();
+            this.bgwInserts = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPedidos)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(195, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 18);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Ruta:";
+            // 
+            // cbRutas
+            // 
+            this.cbRutas.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbRutas.DisplayMember = "ruta";
+            this.cbRutas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRutas.FormattingEnabled = true;
+            this.cbRutas.Location = new System.Drawing.Point(244, 82);
+            this.cbRutas.Name = "cbRutas";
+            this.cbRutas.Size = new System.Drawing.Size(445, 26);
+            this.cbRutas.TabIndex = 22;
+            this.cbRutas.ValueMember = "id_ruta";
+            // 
+            // pbLoading
+            // 
+            this.pbLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbLoading.Image = global::Seguimiento_y_Control.Properties.Resources.cargando;
+            this.pbLoading.Location = new System.Drawing.Point(358, 183);
+            this.pbLoading.Name = "pbLoading";
+            this.pbLoading.Size = new System.Drawing.Size(169, 94);
+            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbLoading.TabIndex = 21;
+            this.pbLoading.TabStop = false;
+            this.pbLoading.Visible = false;
             // 
             // btnCerrar
             // 
+            this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(275, 39);
+            this.btnCerrar.Location = new System.Drawing.Point(530, 38);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(87, 36);
-            this.btnCerrar.TabIndex = 12;
+            this.btnCerrar.TabIndex = 20;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnImprimirPedidos
             // 
+            this.btnImprimirPedidos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnImprimirPedidos.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirPedidos.Image")));
             this.btnImprimirPedidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirPedidos.Location = new System.Drawing.Point(116, 39);
+            this.btnImprimirPedidos.Location = new System.Drawing.Point(371, 39);
             this.btnImprimirPedidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnImprimirPedidos.Name = "btnImprimirPedidos";
             this.btnImprimirPedidos.Size = new System.Drawing.Size(153, 36);
-            this.btnImprimirPedidos.TabIndex = 11;
+            this.btnImprimirPedidos.TabIndex = 19;
             this.btnImprimirPedidos.Text = "Imprimir Pedidos";
             this.btnImprimirPedidos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimirPedidos.UseVisualStyleBackColor = true;
-            this.btnImprimirPedidos.Click += new System.EventHandler(this.btnImprimirPedidos_Click);
             // 
             // btnRequerir
             // 
+            this.btnRequerir.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRequerir.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRequerir.Image = ((System.Drawing.Image)(resources.GetObject("btnRequerir.Image")));
             this.btnRequerir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRequerir.Location = new System.Drawing.Point(12, 39);
+            this.btnRequerir.Location = new System.Drawing.Point(267, 39);
             this.btnRequerir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRequerir.Name = "btnRequerir";
             this.btnRequerir.Size = new System.Drawing.Size(98, 36);
-            this.btnRequerir.TabIndex = 10;
+            this.btnRequerir.TabIndex = 18;
             this.btnRequerir.Text = "Requerir";
             this.btnRequerir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRequerir.UseVisualStyleBackColor = true;
@@ -101,23 +134,18 @@
             // 
             // gridPedidos
             // 
-            this.gridPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridPedidos.DataSource = this.gridPedidoVendedorBindingSource;
+            this.gridPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.gridPedidos.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6);
-            this.gridPedidos.Location = new System.Drawing.Point(12, 117);
+            this.gridPedidos.Location = new System.Drawing.Point(15, 117);
             this.gridPedidos.MainView = this.gvPedidos;
             this.gridPedidos.Margin = new System.Windows.Forms.Padding(6);
             this.gridPedidos.Name = "gridPedidos";
-            this.gridPedidos.Size = new System.Drawing.Size(701, 311);
-            this.gridPedidos.TabIndex = 8;
+            this.gridPedidos.Size = new System.Drawing.Size(854, 308);
+            this.gridPedidos.TabIndex = 16;
             this.gridPedidos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPedidos});
-            // 
-            // gridPedidoVendedorBindingSource
-            // 
-            this.gridPedidoVendedorBindingSource.DataSource = typeof(Seguimiento_y_Control.Clases.Distribucion.GridPedidoVendedor);
             // 
             // gvPedidos
             // 
@@ -321,54 +349,39 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(728, 35);
-            this.label1.TabIndex = 9;
+            this.label1.Size = new System.Drawing.Size(884, 35);
+            this.label1.TabIndex = 17;
             this.label1.Text = "Requisiciones de Vendedores";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbLoading
+            // bgwProceso
             // 
-            this.pbLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbLoading.Image = global::Seguimiento_y_Control.Properties.Resources.cargando;
-            this.pbLoading.Location = new System.Drawing.Point(280, 174);
-            this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(169, 94);
-            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbLoading.TabIndex = 13;
-            this.pbLoading.TabStop = false;
+            this.bgwProceso.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwProceso_DoWork);
+            this.bgwProceso.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwProceso_ProgressChanged);
+            this.bgwProceso.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwProceso_RunWorkerCompleted);
             // 
-            // cbRutas
+            // lblAccion
             // 
-            this.cbRutas.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbRutas.DataSource = this.rutasBindingSource;
-            this.cbRutas.DisplayMember = "ruta";
-            this.cbRutas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRutas.FormattingEnabled = true;
-            this.cbRutas.Location = new System.Drawing.Point(261, 82);
-            this.cbRutas.Name = "cbRutas";
-            this.cbRutas.Size = new System.Drawing.Size(252, 26);
-            this.cbRutas.TabIndex = 14;
-            this.cbRutas.ValueMember = "id_ruta";
+            this.lblAccion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblAccion.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccion.Location = new System.Drawing.Point(12, 431);
+            this.lblAccion.Name = "lblAccion";
+            this.lblAccion.Size = new System.Drawing.Size(860, 21);
+            this.lblAccion.TabIndex = 24;
+            this.lblAccion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rutasBindingSource
+            // bgwInserts
             // 
-            this.rutasBindingSource.DataSource = typeof(Seguimiento_y_Control.Entity.Internet.rutas);
+            this.bgwInserts.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwInserts_DoWork);
+            this.bgwInserts.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwInserts_ProgressChanged);
+            this.bgwInserts.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwInserts_RunWorkerCompleted);
             // 
-            // label2
+            // Frm_DistibucionVendedores
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(215, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 18);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Ruta:";
-            // 
-            // Frm_PedidosVendedores
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 443);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.lblAccion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbRutas);
             this.Controls.Add(this.pbLoading);
@@ -377,17 +390,14 @@
             this.Controls.Add(this.btnRequerir);
             this.Controls.Add(this.gridPedidos);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Frm_PedidosVendedores";
-            this.Text = "Requisiciones de Vendedores v1.1";
-            this.Load += new System.EventHandler(this.Frm_PedidosVendedores_Load);
-            this.Shown += new System.EventHandler(this.Frm_PedidosVendedores_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPedidoVendedorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvPedidos)).EndInit();
+            this.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "Frm_DistibucionVendedores";
+            this.Text = "Requisiciones de vendedores";
+            this.Load += new System.EventHandler(this.Frm_DistibucionVendedores_Load);
+            this.Shown += new System.EventHandler(this.Frm_DistibucionVendedores_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rutasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPedidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,6 +405,9 @@
 
         #endregion
 
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbRutas;
+        private System.Windows.Forms.PictureBox pbLoading;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnImprimirPedidos;
         private System.Windows.Forms.Button btnRequerir;
@@ -402,16 +415,15 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvPedidos;
         private DevExpress.XtraGrid.Columns.GridColumn colSeleccion;
         private DevExpress.XtraGrid.Columns.GridColumn colID_Pedido;
-        private DevExpress.XtraGrid.Columns.GridColumn colFechaSurtir;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource gridPedidoVendedorBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colUsuario;
         private DevExpress.XtraGrid.Columns.GridColumn colCliente;
         private DevExpress.XtraGrid.Columns.GridColumn colRuta;
         private DevExpress.XtraGrid.Columns.GridColumn colFechaPedido;
-        private System.Windows.Forms.PictureBox pbLoading;
-        private System.Windows.Forms.ComboBox cbRutas;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.BindingSource rutasBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colFechaSurtir;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker bgwProceso;
+        private System.Windows.Forms.Label lblAccion;
+        private System.ComponentModel.BackgroundWorker bgwInserts;
+
     }
 }
