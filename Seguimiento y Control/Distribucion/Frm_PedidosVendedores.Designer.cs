@@ -380,7 +380,7 @@
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Frm_PedidosVendedores";
-            this.Text = "Requisiciones de Vendedores v1.1";
+            this.Text = "Requisiciones de Vendedores v1.2";
             this.Load += new System.EventHandler(this.Frm_PedidosVendedores_Load);
             this.Shown += new System.EventHandler(this.Frm_PedidosVendedores_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.gridPedidos)).EndInit();

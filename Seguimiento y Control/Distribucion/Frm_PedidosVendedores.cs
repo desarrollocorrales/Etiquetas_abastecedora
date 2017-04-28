@@ -214,6 +214,19 @@ namespace Seguimiento_y_Control.Distribucion
 
                     if (buscaPedido != null)
                     {
+
+                        var buscarPedidoDet =
+                            SeguimientoContexto
+                                .pedidos_vendedores_det
+                                .Where(w => w.id_pedido_vendedor == buscaPedido.id_pedido_vendedor)
+                                .FirstOrDefault();
+
+                        SeguimientoContexto.DeleteObject(buscarPedidoDet);
+                        SeguimientoContexto.DeleteObject(buscaPedido);
+                        SeguimientoContexto.SaveChanges();
+
+                        /*
+
                         //***** Carga los detalles del pedido
                         pedidos_vendedores_det _detalleSeguimiento;
                         foreach (pedidos_detalle detalle in ListaDetalles)
@@ -249,6 +262,7 @@ namespace Seguimiento_y_Control.Distribucion
                         LstTodosLosEncabezados.Add(_pedidoVendedor);
 
                         continue;
+                         */ 
                     }
                     /* ------------- ACTUALIZACION v1.1 14-Marzo-2017 -------------------------------------- */
 
@@ -331,6 +345,7 @@ namespace Seguimiento_y_Control.Distribucion
                     foreach (pedidos_vendedores_det ArticuloBodega in LstArticulosBodega)
                     {
                         ArticuloBodega.id_pedido_maestro_vendedores_det = PedidoMaestroDet.id_pedido_maestro_vendedores_det;
+
                         SeguimientoContexto.SaveChanges();
 
                         // Encontrar el encabezado
