@@ -1,30 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.IO;
+using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
-using Seguimiento_y_Control.Entity;
+using ConexionWLS;
 using Seguimiento_y_Control.Clases.Configuracion;
-using Sofbr.Utils.Impresoras;
-using System.IO.Ports;
-using System.IO;
 using Seguimiento_y_Control.Clases.Utilitarias;
+using Seguimiento_y_Control.Entity;
+using Sofbr.Utils.Impresoras;
+using System.Configuration;
+using System.Drawing;
 
 namespace Seguimiento_y_Control.Produccion
 {
     public partial class Frm_ImpPesoVariado : Form
     {
+        private string RxString;
         private string sLote;
         private bodegas oBodega;
         private articulos oArticulo;
-        private int iContadorEtiquetas;
+        private int iContadorEtiquetas; int contador=0;
         private Seguimiento_ACC_Entities Contexto;
         private List<etiquetas> ListEtiquetas;
         private StringBuilder sbComandos;
         private string sUnidadPaquete;
+        string auxTxt = string.Empty; string empty = string.Empty;
+        private List<catalog_comandos_etiquetas> SourceEtiquetas;
 
         public Frm_ImpPesoVariado(articulos pArticulo, string pLote, bodegas pBodega)
         {
@@ -35,6 +40,7 @@ namespace Seguimiento_y_Control.Produccion
             iContadorEtiquetas = 0;
             oBodega = pBodega;
             ListEtiquetas = new List<etiquetas>();
+
         }
 
         private void btnTerminar_Click(object sender, EventArgs e)
@@ -102,6 +108,13 @@ namespace Seguimiento_y_Control.Produccion
             CargarDatosEmpresa();
             ActualizarDatosEtiqueta();
 
+            Seguimiento_ACC_Entities Contexto = new Seguimiento_ACC_Entities();
+
+            SourceEtiquetas = Contexto.catalog_comandos_etiquetas.ToList();
+            cbCamara.DataSource = SourceEtiquetas;
+            cbCamara.ValueMember = "id_comando";
+            cbCamara.DisplayMember = "etiqueta";
+
             /***** Inicializar la Bascula *****/
             try
             {
@@ -114,6 +127,26 @@ namespace Seguimiento_y_Control.Produccion
                                 ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             /***********************************/
+
+            if (Properties.Settings.Default.Etiqueta == "SanMateo")
+            {
+                pbLogoEtiqueta.Image = Properties.Resources.SanMateo;
+                lblRazon.Text = "RANCHO SAN MATEO";
+            }
+            else if (Properties.Settings.Default.Etiqueta == "Sumesa")
+            {
+                pbLogoEtiqueta.Image = Properties.Resources.Sumesa;
+                lblRazon.Text = "SUPER SUMESA";
+            }
+            else
+            {
+                pbLogoEtiqueta.Image = Properties.Resources.produccion;
+                lblRazon.Text = "LOS CORRALES SA DE SV";
+            }
+                
+                
+                
+                //Image.FromFile(Path.Combine(Application.StartupPath,"\\"+ Properties.Settings.Default.Etiqueta + ".jpg"));
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -124,7 +157,9 @@ namespace Seguimiento_y_Control.Produccion
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ImprimirPesoVariado();            
+
+            //ImprimirPesoVariadoTorrey();            
+            ImprimirPesoVariado();
         }
         private bool ValidarFechaEmpaque()
         {
@@ -144,11 +179,12 @@ namespace Seguimiento_y_Control.Produccion
                 string Domicilio1 = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "domicilio1").valor;
                 string Domicilio2 = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "domicilio2").valor;
                 string LogoEtiqueta = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "logo_etiqueta").valor;
+                //IP_Torrey = SeguimientoContexto.configuracion.SingleOrDefault(o => o.config == "ip_torrey").valor;
 
                 lblNombreEmpresa.Text = NombreEmpresa + Environment.NewLine + RazonSocial;
                 lblDomicilio.Text = Domicilio1 + Environment.NewLine + Domicilio2;
-                lblRazon.Text = RazonSocial;
-                pbLogoEtiqueta.ImageLocation = LogoEtiqueta;
+                //lblRazon.Text = RazonSocial;
+                //pbLogoEtiqueta.ImageLocation = LogoEtiqueta;
             }
             catch (Exception ex)
             {
@@ -205,8 +241,22 @@ namespace Seguimiento_y_Control.Produccion
             sbComandos = new StringBuilder();
             Contexto = new Seguimiento_ACC_Entities();
             contenedores Contenedor = Contexto.contenedores.FirstOrDefault(o => o.clave_articulo == oArticulo.clave);
-            catalog_comandos_etiquetas ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "produccion");
-            catalog_comandos_etiquetas ComandoTarima = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "Tarima");
+
+            catalog_comandos_etiquetas ComandoTarima = new catalog_comandos_etiquetas();
+            catalog_comandos_etiquetas ComandoEtiqueta = new catalog_comandos_etiquetas();
+
+
+            if (Properties.Settings.Default.Etiqueta != "")
+            {
+                //int idCom = ((List<catalog_comandos_etiquetas>)cbCamara.DataSource)[cbCamara.SelectedIndex].id_comando;
+                ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == Properties.Settings.Default.Etiqueta);
+                ComandoTarima = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "Tarima");
+            }
+            else
+            {
+                MessageBox.Show("No ha seleccionado una etiqueta Valida. Favor de ir al modulo de Administración", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (Contenedor == null)
             {
@@ -228,7 +278,8 @@ namespace Seguimiento_y_Control.Produccion
 
                     if (Contenedor.impresion_paquete == false)
                     {
-                        Comando = ObtenerComando(NuevaEtiqueta, ComandoEtiqueta);
+                        Comando = 
+                            ObtenerComando(NuevaEtiqueta, ComandoEtiqueta);
                         sbComandos.AppendLine(Comando);
                     }
 
@@ -285,8 +336,11 @@ namespace Seguimiento_y_Control.Produccion
         {
             //Imprimir etiquetas sin contenedor
             string Comando;
-            catalog_comandos_etiquetas ComandoEtiqueta;
-            ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "produccion");
+            catalog_comandos_etiquetas ComandoEtiqueta = new catalog_comandos_etiquetas();
+
+
+            ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == Properties.Settings.Default.Etiqueta);
+            //ComandoEtiqueta = Contexto.catalog_comandos_etiquetas.FirstOrDefault(o => o.etiqueta == "produccion");
 
             Contexto.Connection.Open();
             IDbTransaction Transaccion = Contexto.Connection.BeginTransaction();
@@ -316,7 +370,26 @@ namespace Seguimiento_y_Control.Produccion
         {
             try
             {
-                Bascula();
+                switch(Properties.Settings.Default.Bascula.ToUpper())
+                {
+                    case "AB": 
+                        Bascula();
+                        break;
+                    case "T":
+                        Torrey();
+                        break;
+                    case "CC":
+                        contador++;
+                        CobaCorp();                        
+                        break;
+                    case "TC4":
+                        TorreyC4();
+                        break;
+                    case "CC4":
+                        CobaCorpC4();
+                        break;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -326,63 +399,107 @@ namespace Seguimiento_y_Control.Produccion
         }
         private void Bascula()
         {
-            //***** Leer Peso Total GROSS
-            string sGross = objBascula.ReadLine();
-            if (sGross.Trim() == string.Empty || sGross.Contains("GROSS") != true)
+            string str1 = this.objBascula.ReadLine();
+            if (str1.Trim() == string.Empty || !str1.Contains("GROSS"))
                 return;
-            
-            string subGrossLbl = sGross.Substring(0, 5).Trim();
-            string subGrossPeso = sGross.Substring(5, 14).Trim();
-            string subGrossUnidad = sGross.Substring(19, 2).Trim();
-
-            //***** Leer Peso del contenedor TARA
-            string sTare = objBascula.ReadLine();
-            string subNetPeso = "0";
-            if (sTare.Length == 11)
+            string str2 = str1.Substring(0, 5).Trim();
+            string sCadena1 = str1.Substring(5, 14).Trim();
+            string str3 = str1.Substring(19, 2).Trim();
+            string str4 = this.objBascula.ReadLine();
+            string sCadena2;
+            if (str4.Length == 11)
             {
-                subNetPeso = "0";
+                sCadena2 = "0";
             }
             else
             {
-                string subTareLbl = sTare.Substring(0, 5).Trim();
-                string subTarePeso = sTare.Substring(5, 14).Trim();
-                string subTareUnidad = sTare.Substring(19, 2).Trim();
-
-                //***** Leer Peso del producto NETO
-                string sNet = objBascula.ReadLine();
-                string subNetLbl = sNet.Substring(0, 5).Trim();
-                subNetPeso = sNet.Substring(5, 14).Trim();
-                string subNetUnidad = sNet.Substring(19, 2).Trim();
+                str4.Substring(0, 5).Trim();
+                str4.Substring(5, 14).Trim();
+                str4.Substring(19, 2).Trim();
+                string str5 = this.objBascula.ReadLine();
+                str5.Substring(0, 5).Trim();
+                sCadena2 = str5.Substring(5, 14).Trim();
+                str5.Substring(19, 2).Trim();
             }
-
-            if (subGrossLbl.ToUpper() == "GROSS")
-            {
-                if (subGrossUnidad.ToUpper() == "KG")
-                {
-                    //***** Convertir el Peso Neto a Decimal
-                    decimal peso = Convert.ToDecimal(subNetPeso);
-                    if (peso == 0)
-                    {
-                        //***** Si el Peso Neto es "0" Imprimir el Peso Total (GROSS) en la etiqueta
-                        Enviar(subGrossPeso);
-                    }
-                    else
-                    {
-                        //***** Si el Peso Neto es diferente de "0" Imprimirlo en la etiqueta
-                        Enviar(subNetPeso);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Verifique las unidades de Medida ", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    throw new IOException("Verifique las unidades de Medida");
-                }
-            }
-            else
-            {
+            if (!(str2.ToUpper() == "GROSS"))
                 throw new IOException("Error al leer la bascula");
+            if (str3.ToUpper() == "KG")
+            {
+                if (Convert.ToDecimal(sCadena2) == new Decimal(0))
+                    this.Enviar(sCadena1);
+                else
+                    this.Enviar(sCadena2);
             }
+            else
+            {
+                int num = (int)MessageBox.Show("Verifique las unidades de Medida ", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                throw new IOException("Verifique las unidades de Medida");
+            }
+
+            ////***** Leer Peso Total GROSS
+            //string sGross = objBascula.ReadExisting();
+            //sGross = sGross.Replace("\n", "");
+            //sGross = sGross.Replace("\r", "");
+            //if (sGross.Trim() == string.Empty || sGross.Contains("GROSS") != true)
+            //    return;
+
+            //string subGrossLbl = sGross.Substring(0, 5).Trim();
+            //string subGrossPeso = sGross.Substring(5, 14).Trim();
+            //string subGrossUnidad = sGross.Substring(19, 2).Trim();
+
+            ////***** Leer Peso del contenedor TARA
+            //string subNetPeso = "0";
+            //if (sGross.Length == 63)
+            //{
+            //    string sTare = sGross.Substring(21, 21).Trim();
+            //    subNetPeso = "0";
+            //    if (sTare.Length == 11)
+            //    {
+            //        subNetPeso = "0";
+            //    }
+            //    else
+            //    {
+            //        string subTareLbl = sTare.Substring(0, 5).Trim();
+            //        string subTarePeso = sTare.Substring(5, 14).Trim();
+            //        string subTareUnidad = sTare.Substring(19, 2).Trim();
+
+            //        //***** Leer Peso del producto NETO
+            //        string sNet = sGross.Substring(42, 21).Trim();
+            //        string subNetLbl = sNet.Substring(0, 5).Trim();
+            //        subNetPeso = sNet.Substring(5, 14).Trim();
+            //        string subNetUnidad = sNet.Substring(19, 2).Trim();
+            //    }
+            //}
+
+            //if (subGrossLbl.ToUpper() == "GROSS")
+            //{
+            //    if (subGrossUnidad.ToUpper() == "KG")
+            //    {
+            //        //***** Convertir el Peso Neto a Decimal
+            //        decimal peso = Convert.ToDecimal(subNetPeso);
+            //        if (peso == 0)
+            //        {
+            //            //***** Si el Peso Neto es "0" Imprimir el Peso Total (GROSS) en la etiqueta
+            //            Enviar(subGrossPeso);
+            //        }
+            //        else
+            //        {
+            //            //***** Si el Peso Neto es diferente de "0" Imprimirlo en la etiqueta
+            //            Enviar(subNetPeso);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Verifique las unidades de Medida ", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        throw new IOException("Verifique las unidades de Medida");
+            //    }
+            //}
+            //else
+            //{
+            //    throw new IOException("Error al leer la bascula");
+            //}
         }
+               
         private void Enviar(string sCadena)
         {
             // InvokeRequired required compares the thread ID of the
@@ -548,5 +665,344 @@ namespace Seguimiento_y_Control.Produccion
             return fechaServer;
         }
         #endregion  
+
+        #region *** Torrey C4 ***
+
+        private void TorreyC4()
+        {
+            RxString = objBascula.ReadExisting();
+            this.Invoke(new EventHandler(DisplayTextC4));
+        }
+        private void DisplayTextC4(object sender, EventArgs e)
+        {
+            try
+            {
+                if (RxString.Trim() != string.Empty)
+                {
+                    if (RxString.ToUpper().Contains("LBS") == true)
+                    {
+                        txbCantidad.Text = "Error";
+                        MessageBox.Show("Verifique las unidades de Medida");
+                    }
+                    else
+                    {
+                        RxString = RxString.Trim();
+                        var cantidad = RxString.Split(' ');
+
+                        if (cantidad.Length == 1)
+                        {
+                            if (EsNumerico(cantidad[0]))
+                            {
+                                //var dCantidad = Convert.ToDecimal(cantidad[0]);
+                                if (auxTxt != string.Empty) auxTxt = auxTxt + cantidad[0];
+                                else auxTxt = cantidad[0];
+
+                                txbCantidad.Text = auxTxt; //cantidad[0];
+
+                                if(txbCantidad.Text.Length >= 4)
+                                    ImprimirPesoVariado();
+                            }
+                            else auxTxt = string.Empty;
+                        }
+                        else if (cantidad.Length == 2)
+                        {
+                            if (EsNumerico(cantidad[0]))
+                            {
+                                //var dCantidad = Convert.ToDecimal(cantidad[0]);
+                                if (auxTxt != string.Empty) auxTxt = auxTxt + cantidad[0];
+                                else auxTxt = cantidad[0];
+
+                                txbCantidad.Text = auxTxt; // cantidad[0];
+
+                                if (txbCantidad.Text.Length >= 4)
+                                    ImprimirPesoVariado();
+                                auxTxt = string.Empty;
+                            }
+                        }
+                        else
+                        {
+                            auxTxt = string.Empty;
+                            MessageBox.Show("Error en el peso...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StringBuilder sbMensaje = new StringBuilder();
+                while (ex != null)
+                {
+                    sbMensaje.AppendLine(ex.Message);
+                    ex = ex.InnerException;
+                }
+
+                sbComandos.AppendLine(RxString + ": " + RxString.Length);
+                MessageBox.Show(sbMensaje.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public bool EsNumerico(string strIn)
+        {
+            try
+            {
+                decimal.Parse(strIn);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region * * * Coba Corp * * *
+        private void CobaCorp()
+        {
+            if (contador > 2) return;
+            else {
+                if(contador==1){
+                    RxString = objBascula.ReadExisting();
+                }
+                else if(contador==2){
+                    RxString = RxString +objBascula.ReadExisting();
+                this.Invoke(new EventHandler(CobaCorp_DisplayText));
+                contador = 0;
+                }
+            }
+        }
+        //private void CobaCorp_DisplayText(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (RxString.Trim() != string.Empty)
+        //        {
+        //            if (RxString.ToUpper().Contains("LBS") == true)
+        //            {
+        //                txbCantidad.Text = "Error";
+        //                MessageBox.Show("Verifique las unidades de Medida");
+        //            }
+        //            else
+        //            {
+        //                RxString = RxString.Trim();
+        //                var peso = string.Empty;
+
+        //                foreach (char caracter in RxString)
+        //                {
+        //                    if (Char.IsDigit(caracter) == true)
+        //                    {
+        //                        peso += caracter;
+        //                    }
+        //                    else if (Char.IsPunctuation(caracter)==true)
+        //                    {
+        //                        peso += caracter; 
+        //                    }
+        //                }
+
+        //                var dCantidad = Convert.ToDecimal(peso);
+
+        //                if (dCantidad > 0)
+        //                {
+        //                    txbCantidad.Text = peso;
+        //                    ImprimirPesoVariado();
+        //                }
+        //                else
+        //                {
+        //                    //MessageBox.Show("Error en el peso. Debe ser mayor a cero...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        StringBuilder sbMensaje = new StringBuilder();
+        //        while (ex != null)
+        //        {
+        //            sbMensaje.AppendLine(ex.Message);
+        //            ex = ex.InnerException;
+        //        }
+
+        //        sbComandos.AppendLine(RxString + ": " + RxString.Length);
+        //        MessageBox.Show(sbMensaje.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+        private void CobaCorp_DisplayText(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!(this.RxString.Trim() != string.Empty))
+                    return;
+                if (this.RxString.ToUpper().Contains("LBS"))
+                {
+                    this.txbCantidad.Text = "Error";
+                    int num = (int)MessageBox.Show("Verifique las unidades de Medida");
+                }
+                else
+                {
+                    this.RxString = this.RxString.Trim();
+                    string empty = string.Empty;
+                    foreach (char c in this.RxString)
+                    {
+                        if (char.IsDigit(c))
+                            empty = empty.Trim() + new string(c, 1);
+                        //empty += (string)(object)c;
+                        else if (char.IsPunctuation(c))
+                        {
+                            if (c.ToString() == "-")
+                            {
+                            }
+                            else
+                                empty = empty.Trim() + new string(c, 1);
+                            //empty += (string)(object)c;
+                        }
+                    }
+                    if (Convert.ToDecimal(empty) > new Decimal(0))
+                    {
+                        this.txbCantidad.Text = empty;
+                        this.ImprimirPesoVariado();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Exception exception = ex;
+                StringBuilder stringBuilder = new StringBuilder();
+                for (; exception != null; exception = exception.InnerException)
+                    stringBuilder.AppendLine(exception.Message);
+                this.sbComandos.AppendLine(this.RxString + ": " + (object)this.RxString.Length);
+                int num = (int)MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+
+        private void CobaCorpC4()
+        {
+            RxString = objBascula.ReadExisting();
+            this.Invoke(new EventHandler(CobaCorp_DisplayTextC4));
+            
+        }
+
+
+        private void CobaCorp_DisplayTextC4(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!(this.RxString.Trim() != string.Empty))
+                    return;
+                if (this.RxString.ToUpper().Contains("LBS"))
+                {
+                    this.txbCantidad.Text = "Error";
+                    int num = (int)MessageBox.Show("Verifique las unidades de Medida");
+                }
+                else
+                {
+                    this.RxString = this.RxString.Trim();
+                    string empty = string.Empty;
+                    foreach (char c in this.RxString)
+                    {
+                        if (char.IsDigit(c))
+                            empty = empty.Trim() + new string(c, 1);
+                        //empty += (string)(object)c;
+                        else if (char.IsPunctuation(c))
+                        {
+                            if (c.ToString() == "-")
+                            {
+                            }
+                            else
+                                empty = empty.Trim() + new string(c, 1);
+                            //empty += (string)(object)c;
+                        }
+                    }
+                    if (Convert.ToDecimal(empty) > new Decimal(0))
+                    {
+                        this.txbCantidad.Text = empty;
+                        this.ImprimirPesoVariado();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Exception exception = ex;
+                StringBuilder stringBuilder = new StringBuilder();
+                for (; exception != null; exception = exception.InnerException)
+                    stringBuilder.AppendLine(exception.Message);
+                this.sbComandos.AppendLine(this.RxString + ": " + (object)this.RxString.Length);
+                int num = (int)MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+
+        #endregion
+
+        #region *** Torrey ***
+
+        private void Torrey()
+        {
+            RxString = objBascula.ReadExisting();
+            this.Invoke(new EventHandler(DisplayText));
+        }
+        private void DisplayText(object sender, EventArgs e)
+        {
+            try
+            {
+                if (RxString.Trim() != string.Empty)
+                {
+                    if (RxString.ToUpper().Contains("LBS") == true)
+                    {
+                        txbCantidad.Text = "Error";
+                        MessageBox.Show("Verifique las unidades de Medida");
+                    }
+                    else
+                    {
+                        RxString = RxString.Trim();
+                        var cantidad = RxString.Split(' ');
+
+                        if (cantidad.Length == 2)
+                        {
+                            var dCantidad = Convert.ToDecimal(cantidad[0]);
+                            if (dCantidad > 0)
+                            {
+                                txbCantidad.Text = cantidad[0];
+                                ImprimirPesoVariado();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error en el peso...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StringBuilder sbMensaje = new StringBuilder();
+                while (ex != null)
+                {
+                    sbMensaje.AppendLine(ex.Message);
+                    ex = ex.InnerException;
+                }
+
+                sbComandos.AppendLine(RxString + ": " + RxString.Length);
+                MessageBox.Show(sbMensaje.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        private void txbCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (ValidarFechaEmpaque() == false)
+                {
+                    MessageBox.Show("Error en la fecha de empaque...", "",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //ImprimirPesoVariadoTorrey();
+                ImprimirPesoVariado();
+            }
+        }
     }
 }

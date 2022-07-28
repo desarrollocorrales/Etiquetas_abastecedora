@@ -193,12 +193,12 @@ namespace Seguimiento_y_Control.Produccion
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            if (ValidarFechaEmpaque() == false)
-            {
-                MessageBox.Show("Error en la fecha de empaque...", "",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (ValidarFechaEmpaque() == false)
+            //{
+            //    MessageBox.Show("Error en la fecha de empaque...", "",
+            //                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             if (rbPesoFijo.Checked == true)
                 imprimirPesoFijo();
@@ -528,6 +528,8 @@ namespace Seguimiento_y_Control.Produccion
 
         private void btnBuscarPedidos_Click(object sender, EventArgs e)
         {
+
+            string sImpresoraEtiquetas = Properties.Settings.Default.Impresora;
             Frm_BuscarPedido frmBuscarPedido = new Frm_BuscarPedido(Config.user.id_usuario);
             frmBuscarPedido.ShowDialog();
             oPedido = frmBuscarPedido.Pedido;

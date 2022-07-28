@@ -55,47 +55,53 @@ namespace Seguimiento_y_Control.Produccion
         }
         private void BuscarEtiquetasSinContenedor()
         {
-            Seguimiento_ACC_Entities segContext = new Seguimiento_ACC_Entities();
-
-            List<etiquetas> lstEtiquetasDelPedido = new List<etiquetas>();
-            List<EtiquetasTarimas> SourceGrid = new List<EtiquetasTarimas>();
-
-            if (oArticulo != null)
+            try
             {
-                //Buscar solo un articulo
-                lstEtiquetasDelPedido.AddRange(segContext.etiquetas.Where(o => o.id_pedido == oPedido.id_pedido
-                                                                            && o.clave_articulo == oArticulo.clave
-                                                                            && o.estatus == "A"));                
-            }
-            else
-            {
-                //Buscar todos los articulos
-                lstEtiquetasDelPedido.AddRange(segContext.etiquetas.Where(o => o.id_pedido == oPedido.id_pedido
-                                                                            && o.estatus == "A"));
-            }
+                Seguimiento_ACC_Entities segContext = new Seguimiento_ACC_Entities();
+                //segContext.CommandTimeout = 360;
 
-            foreach (etiquetas oEtiqueta in lstEtiquetasDelPedido)
-            {
-                //Preguntar si ya tiene contenedor
-                paquetes_det oPaqDetalle =
-                    segContext.paquetes_det.FirstOrDefault(o => o.id_etiqueta == oEtiqueta.id_etiqueta);
-                if (oPaqDetalle == null)
+                List<etiquetas> lstEtiquetasDelPedido = new List<etiquetas>();
+                List<EtiquetasTarimas> SourceGrid = new List<EtiquetasTarimas>();
+
+                if (oArticulo != null)
                 {
-                    //No tiene contenedor
-                    EtiquetasTarimas oEtiquetaTarima = new EtiquetasTarimas();
-                    oEtiquetaTarima.Checked = false;
-                    oEtiquetaTarima.Etiqueta = oEtiqueta;
-                    SourceGrid.Add(oEtiquetaTarima);
+                    //Buscar solo un articulo
+                    lstEtiquetasDelPedido.AddRange(segContext.etiquetas.Where(o => o.id_pedido == oPedido.id_pedido
+                                                                                && o.clave_articulo == oArticulo.clave
+                                                                                && o.estatus == "A"));
                 }
+                else
+                {
+                    //Buscar todos los articulos
+                    lstEtiquetasDelPedido.AddRange(segContext.etiquetas.Where(o => o.id_pedido == oPedido.id_pedido
+                                                                                && o.estatus == "A"));
+                }
+
+                foreach (etiquetas oEtiqueta in lstEtiquetasDelPedido)
+                {
+                    //Preguntar si ya tiene contenedor
+                    paquetes_det oPaqDetalle =
+                        segContext.paquetes_det.FirstOrDefault(o => o.id_etiqueta == oEtiqueta.id_etiqueta);
+                    if (oPaqDetalle == null)
+                    {
+                        //No tiene contenedor
+                        EtiquetasTarimas oEtiquetaTarima = new EtiquetasTarimas();
+                        oEtiquetaTarima.Checked = false;
+                        oEtiquetaTarima.Etiqueta = oEtiqueta;
+                        SourceGrid.Add(oEtiquetaTarima);
+                    }
+                }
+
+                gridEtiquetas.DataSource = SourceGrid;
+                gvEtiquetas.BestFitColumns();
+
+                if (SourceGrid.Count == 0)
+                    btnCrear.Enabled = false;
+                else
+                    btnCrear.Enabled = true;
             }
-
-            gridEtiquetas.DataSource = SourceGrid;
-            gvEtiquetas.BestFitColumns();
-
-            if (SourceGrid.Count == 0) 
-                btnCrear.Enabled = false;
-            else 
-                btnCrear.Enabled = true;
+            catch (Exception ex)
+            { MessageBox.Show(ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -135,6 +141,7 @@ namespace Seguimiento_y_Control.Produccion
         private void CrearTarimaUnProducto(List<EtiquetasTarimas> lstEtiquetasSeleccionadas)
         {
             Seguimiento_ACC_Entities SegContext = new Seguimiento_ACC_Entities();
+            //SegContext.CommandTimeout = 360;
             SegContext.Connection.Open();
             IDbTransaction Transaccion = SegContext.Connection.BeginTransaction();
 
@@ -208,7 +215,7 @@ namespace Seguimiento_y_Control.Produccion
 
         private void CrearTarimaVariosProductos(List<EtiquetasTarimas> lstEtiquetasSeleccionadas)
         {
-            Seguimiento_ACC_Entities SegContext = new Seguimiento_ACC_Entities();
+            Seguimiento_ACC_Entities SegContext = new Seguimiento_ACC_Entities();            
             SegContext.Connection.Open();
             IDbTransaction Transaccion = SegContext.Connection.BeginTransaction();
 

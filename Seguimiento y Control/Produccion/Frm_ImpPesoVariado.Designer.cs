@@ -53,13 +53,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblRazon = new System.Windows.Forms.Label();
             this.lblNumeroEtiqueta = new System.Windows.Forms.Label();
+            this.objBascula = new System.IO.Ports.SerialPort(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnTerminar = new System.Windows.Forms.Button();
-            this.objBascula = new System.IO.Ports.SerialPort(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbCamara = new System.Windows.Forms.ComboBox();
             this.panelPreview.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnPiezas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoEtiqueta)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelPreview
@@ -88,7 +92,7 @@
             this.panelPreview.Enabled = false;
             this.panelPreview.Location = new System.Drawing.Point(0, 0);
             this.panelPreview.Name = "panelPreview";
-            this.panelPreview.Size = new System.Drawing.Size(664, 330);
+            this.panelPreview.Size = new System.Drawing.Size(664, 360);
             this.panelPreview.TabIndex = 13;
             // 
             // dtpEmpaque
@@ -96,7 +100,7 @@
             this.dtpEmpaque.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtpEmpaque.CustomFormat = "dd/MM/yyyy";
             this.dtpEmpaque.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEmpaque.Location = new System.Drawing.Point(365, 83);
+            this.dtpEmpaque.Location = new System.Drawing.Point(365, 98);
             this.dtpEmpaque.Name = "dtpEmpaque";
             this.dtpEmpaque.Size = new System.Drawing.Size(92, 26);
             this.dtpEmpaque.TabIndex = 39;
@@ -105,7 +109,7 @@
             // 
             this.lblPara.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPara.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPara.Location = new System.Drawing.Point(90, 130);
+            this.lblPara.Location = new System.Drawing.Point(90, 145);
             this.lblPara.Name = "lblPara";
             this.lblPara.Size = new System.Drawing.Size(532, 20);
             this.lblPara.TabIndex = 38;
@@ -114,7 +118,7 @@
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.Location = new System.Drawing.Point(29, 130);
+            this.label8.Location = new System.Drawing.Point(29, 145);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 22);
             this.label8.TabIndex = 37;
@@ -125,7 +129,7 @@
             // 
             this.lblLote.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblLote.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLote.Location = new System.Drawing.Point(90, 150);
+            this.lblLote.Location = new System.Drawing.Point(90, 165);
             this.lblLote.Name = "lblLote";
             this.lblLote.Size = new System.Drawing.Size(80, 20);
             this.lblLote.TabIndex = 36;
@@ -134,7 +138,7 @@
             // lblLeyenda
             // 
             this.lblLeyenda.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblLeyenda.Location = new System.Drawing.Point(263, 110);
+            this.lblLeyenda.Location = new System.Drawing.Point(263, 125);
             this.lblLeyenda.Name = "lblLeyenda";
             this.lblLeyenda.Size = new System.Drawing.Size(371, 20);
             this.lblLeyenda.TabIndex = 34;
@@ -145,7 +149,7 @@
             // 
             this.lblCaducidad.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCaducidad.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCaducidad.Location = new System.Drawing.Point(554, 90);
+            this.lblCaducidad.Location = new System.Drawing.Point(554, 105);
             this.lblCaducidad.Name = "lblCaducidad";
             this.lblCaducidad.Size = new System.Drawing.Size(80, 20);
             this.lblCaducidad.TabIndex = 33;
@@ -154,7 +158,7 @@
             // label13
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.Location = new System.Drawing.Point(464, 90);
+            this.label13.Location = new System.Drawing.Point(464, 105);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(84, 20);
             this.label13.TabIndex = 32;
@@ -164,7 +168,7 @@
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.Location = new System.Drawing.Point(263, 90);
+            this.label11.Location = new System.Drawing.Point(263, 105);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(97, 20);
             this.label11.TabIndex = 30;
@@ -174,7 +178,7 @@
             // lblDomicilio
             // 
             this.lblDomicilio.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDomicilio.Location = new System.Drawing.Point(263, 44);
+            this.lblDomicilio.Location = new System.Drawing.Point(263, 59);
             this.lblDomicilio.Name = "lblDomicilio";
             this.lblDomicilio.Size = new System.Drawing.Size(371, 36);
             this.lblDomicilio.TabIndex = 29;
@@ -185,7 +189,7 @@
             // lblNombreEmpresa
             // 
             this.lblNombreEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNombreEmpresa.Location = new System.Drawing.Point(263, 2);
+            this.lblNombreEmpresa.Location = new System.Drawing.Point(263, 17);
             this.lblNombreEmpresa.Name = "lblNombreEmpresa";
             this.lblNombreEmpresa.Size = new System.Drawing.Size(371, 39);
             this.lblNombreEmpresa.TabIndex = 28;
@@ -196,7 +200,7 @@
             // 
             this.lblArticulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblArticulo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticulo.Location = new System.Drawing.Point(32, 174);
+            this.lblArticulo.Location = new System.Drawing.Point(32, 189);
             this.lblArticulo.Name = "lblArticulo";
             this.lblArticulo.Size = new System.Drawing.Size(602, 26);
             this.lblArticulo.TabIndex = 27;
@@ -207,7 +211,7 @@
             // 
             this.lblClave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblClave.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClave.Location = new System.Drawing.Point(263, 148);
+            this.lblClave.Location = new System.Drawing.Point(263, 163);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(371, 26);
             this.lblClave.TabIndex = 26;
@@ -223,7 +227,7 @@
             this.panel2.Controls.Add(this.txbCantidad);
             this.panel2.Controls.Add(this.lblUnidad);
             this.panel2.Controls.Add(this.lblCantidadPeso);
-            this.panel2.Location = new System.Drawing.Point(263, 204);
+            this.panel2.Location = new System.Drawing.Point(263, 219);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(371, 116);
@@ -263,6 +267,7 @@
             this.txbCantidad.TabIndex = 14;
             this.txbCantidad.Text = "0000.0000";
             this.txbCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCantidad_KeyPress);
             // 
             // lblUnidad
             // 
@@ -287,7 +292,7 @@
             // lbl
             // 
             this.lbl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl.Location = new System.Drawing.Point(29, 148);
+            this.lbl.Location = new System.Drawing.Point(29, 163);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(55, 22);
             this.lbl.TabIndex = 24;
@@ -297,8 +302,7 @@
             // pbLogoEtiqueta
             // 
             this.pbLogoEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbLogoEtiqueta.Image = global::Seguimiento_y_Control.Properties.Resources.logoEtq;
-            this.pbLogoEtiqueta.Location = new System.Drawing.Point(29, 24);
+            this.pbLogoEtiqueta.Location = new System.Drawing.Point(29, 39);
             this.pbLogoEtiqueta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbLogoEtiqueta.Name = "pbLogoEtiqueta";
             this.pbLogoEtiqueta.Size = new System.Drawing.Size(170, 70);
@@ -310,7 +314,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(29, 2);
+            this.label6.Location = new System.Drawing.Point(29, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(170, 18);
             this.label6.TabIndex = 19;
@@ -321,7 +325,7 @@
             // 
             this.lblRazon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRazon.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRazon.Location = new System.Drawing.Point(29, 98);
+            this.lblRazon.Location = new System.Drawing.Point(29, 113);
             this.lblRazon.Name = "lblRazon";
             this.lblRazon.Size = new System.Drawing.Size(170, 22);
             this.lblRazon.TabIndex = 21;
@@ -331,23 +335,37 @@
             // lblNumeroEtiqueta
             // 
             this.lblNumeroEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNumeroEtiqueta.Font = new System.Drawing.Font("EAN-13", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroEtiqueta.Location = new System.Drawing.Point(29, 204);
+            this.lblNumeroEtiqueta.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroEtiqueta.Location = new System.Drawing.Point(32, 219);
             this.lblNumeroEtiqueta.Name = "lblNumeroEtiqueta";
-            this.lblNumeroEtiqueta.Size = new System.Drawing.Size(192, 116);
+            this.lblNumeroEtiqueta.Size = new System.Drawing.Size(225, 116);
             this.lblNumeroEtiqueta.TabIndex = 35;
             this.lblNumeroEtiqueta.Text = "0000000000000";
             this.lblNumeroEtiqueta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // objBascula
+            // 
+            this.objBascula.PortName = "COM3";
+            this.objBascula.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.objBascula_DataReceived);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnImprimir);
+            this.panel1.Controls.Add(this.btnTerminar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(435, 360);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(229, 51);
+            this.panel1.TabIndex = 20;
+            // 
             // btnImprimir
             // 
-            this.btnImprimir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimir.Image = global::Seguimiento_y_Control.Properties.Resources.Printer30;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(281, 365);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImprimir.Location = new System.Drawing.Point(3, 10);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(102, 35);
+            this.btnImprimir.Size = new System.Drawing.Size(102, 33);
             this.btnImprimir.TabIndex = 18;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -359,27 +377,46 @@
             this.btnTerminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTerminar.Image = global::Seguimiento_y_Control.Properties.Resources.close_icon30;
             this.btnTerminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTerminar.Location = new System.Drawing.Point(550, 365);
+            this.btnTerminar.Location = new System.Drawing.Point(120, 10);
             this.btnTerminar.Name = "btnTerminar";
-            this.btnTerminar.Size = new System.Drawing.Size(102, 35);
+            this.btnTerminar.Size = new System.Drawing.Size(102, 33);
             this.btnTerminar.TabIndex = 19;
             this.btnTerminar.Text = "Terminar";
             this.btnTerminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTerminar.UseVisualStyleBackColor = true;
             this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
             // 
-            // objBascula
+            // label4
             // 
-            this.objBascula.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.objBascula_DataReceived);
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 377);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 18);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Etiqueta:";
+            this.label4.Visible = false;
+            // 
+            // cbCamara
+            // 
+            this.cbCamara.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbCamara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCamara.FormattingEnabled = true;
+            this.cbCamara.Location = new System.Drawing.Point(76, 373);
+            this.cbCamara.Name = "cbCamara";
+            this.cbCamara.Size = new System.Drawing.Size(212, 26);
+            this.cbCamara.TabIndex = 21;
+            this.cbCamara.Visible = false;
             // 
             // Frm_ImpPesoVariado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 412);
+            this.ClientSize = new System.Drawing.Size(664, 411);
             this.ControlBox = false;
-            this.Controls.Add(this.btnTerminar);
-            this.Controls.Add(this.btnImprimir);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbCamara);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelPreview);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -397,7 +434,9 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDnPiezas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoEtiqueta)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -429,6 +468,9 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnTerminar;
         private System.Windows.Forms.DateTimePicker dtpEmpaque;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbCamara;
         public System.IO.Ports.SerialPort objBascula;
     }
 }
